@@ -1,5 +1,0 @@
-INDEX VERSION 1.127+/Users/arthurveys/Documents/Cours/JEE2/Projet/SchoolManager/.metadata/.plugins/org.eclipse.jdt.core
-510521431.index
-1185138901.index
-284219660.index
-1971369501.index

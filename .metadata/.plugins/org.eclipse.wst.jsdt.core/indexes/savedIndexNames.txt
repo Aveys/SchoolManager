@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+/Users/arthurveys/Documents/Cours/JEE2/Projet/SchoolManager/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+316991060.index
+3512803758.index
+2243901657.index
+4053915454.index
+4007586236.index
+683515884.index

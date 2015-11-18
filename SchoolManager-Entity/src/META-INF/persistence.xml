@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="SchoolManager-Entity">
+		<class>entities.Adresse</class>
+		<class>entities.Classe</class>
+		<class>entities.Ecole</class>
+		<class>entities.Enfant</class>
+		<class>entities.Enseignant</class>
+		<class>entities.Famille</class>
+		<class>entities.Paiement</class>
+		<class>entities.Reglement</class>
+		<class>entities.Tuteur</class>
+		<class>entities.User</class>
+		<class>entities.Droit</class>
+		<class>entities.FrequencePaiement</class>
+		<class>entities.ModePaiement</class>
+		<class>entities.Niveau</class>
+		<class>entities.Sexe</class>
+		<class>entities.SituationFamiliale</class>
+		<class>entities.TypeEcole</class>
 	</persistence-unit>
 </persistence>

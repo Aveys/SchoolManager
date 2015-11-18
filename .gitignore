@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io/api/osx,windows,java,jboss,eclipse,maven
 
+.recommenders
+
 ### OSX ###
 .DS_Store
 .AppleDouble

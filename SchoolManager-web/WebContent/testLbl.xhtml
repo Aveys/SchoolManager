@@ -9,9 +9,9 @@
 	<title>List user</title>
 </h:head>
 <h:body>
-	<p:dataTable var="Prenom" value="#{userController.listUser()}">
+	<p:dataTable var="user" value="#{userController.listUser()}">
 	    <p:column headerText="First name">
-	        <h:outputText value="#{user.prenom}" />
+	        <h:outputText value="#{user.mail}" />
 	    </p:column>
 	 
 	    <p:column headerText="Nom">

@@ -16,6 +16,7 @@ public class User implements Serializable {
 
 	@Id
 	@Column(name="id_user")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUser;
 
 	private String mail;

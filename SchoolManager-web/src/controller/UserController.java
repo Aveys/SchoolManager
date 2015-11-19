@@ -27,10 +27,10 @@ public class UserController {
 		User user = userServices.getUser(login.getMail(), login.getMotDePasse());
 		
 		if(user != null){
-			 //récupère l'espace de mémoire de JSF
+			 //rï¿½cupï¿½re l'espace de mï¿½moire de JSF
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
             Map<String, Object> sessionMap = externalContext.getSessionMap();
-            //place l'utilisateur dans l' espace  de mémoire de JSF
+            //place l'utilisateur dans l' espace  de mï¿½moire de JSF
             sessionMap.put("loggedUser", user);
             //redirect the current page
             FacesContext context = FacesContext.getCurrentInstance();
@@ -49,7 +49,6 @@ public class UserController {
 
 
 	public List<User> listUser() {
-		System.out.println("test");
 		return userService.getListUser();
 	}
 	

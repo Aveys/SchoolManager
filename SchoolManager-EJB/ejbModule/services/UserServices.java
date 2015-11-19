@@ -9,4 +9,5 @@ public interface UserServices {
 	public User getUser(String mail, String motDePasse);
 	public void addUser(User user);
 	public List<User> getListUser();
+	public void updateUser(User user);
 }

@@ -46,4 +46,21 @@ public class UserServicesImpl implements UserServices{
 		
 	}
 
+	@Override
+	public void updateUser(User user) {
+		
+		//
+		User oldUser = em.find(User.class,user.getIdUser());
+		
+		//Met à jour les champs de l'entité
+		oldUser.setMail(user.getMail());
+		oldUser.setMotDePasse(user.getMotDePasse());
+		oldUser.setNom(user.getNom());
+		oldUser.setPrenom(user.getPrenom());
+		oldUser.setTRDroitsDro(user.getTRDroitsDro());
+		
+		em.getTransaction().commit();
+		
+	}
+
 }

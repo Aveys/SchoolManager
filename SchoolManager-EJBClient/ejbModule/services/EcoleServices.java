@@ -2,8 +2,10 @@ package services;
 
 import java.util.List;
 
-import entities.Ecole;
+import javax.ejb.Local;
 
+import entities.Ecole;
+@Local
 public interface EcoleServices {
 
 	public Ecole getEcole(int idEcole);

@@ -6,6 +6,12 @@
   </module>
   <module>
     <web>
+      <web-uri>SchoolManager-Web.war</web-uri>
+      <context-root>SchoolManager-Web</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
       <web-uri>SchoolManager-web.war</web-uri>
       <context-root>SchoolManager-web</context-root>
     </web>

@@ -2,6 +2,7 @@ package services.impl;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -9,9 +10,10 @@ import javax.persistence.Query;
 import entities.Ecole;
 import services.EcoleServices;
 
+@Stateless
 public class EcoleServicesImpl implements EcoleServices {
 
-	@PersistenceContext(name = "SchoolManager-Entity")
+	@PersistenceContext(name = "SchoolManager-Web")
 	private EntityManager em;
 	
 	/**

@@ -1,27 +1,46 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
-<f:view contentType="text/html">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Liste des écoles
+					</h1>
+					<ol class="breadcrumb">
+						<li class="active"><i class="fa fa-dashboard"></i> Dashboard
+						</li>
+					</ol>
+				</div>
+			</div>
+			<!-- /.row -->
 
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
-    <link rel="stylesheet" href="css/template.css" type="text/css"/>
-    <title>Page title</title>
+			<div class="row">
+				<!-- CONTENT HERE !!!! ASK ME FOR DESIGN HELP -->
+				<p:dataTable var="ecole" value="#{ecoleController.getEcoles()}">
+					    <p:column headerText="Nom">
+					        <h:outputText value="#{ecole.nomEtablissement}" />
+					    </p:column>
+					 
+					    <p:column headerText="Adresse">
+					        <h:outputText value="#{ecole.adresse}" />
+					    </p:column>
+					    
+					    <p:column headerText="Email">
+					        <h:outputText value="#{ecole.email}" />
+					    </p:column>
+					    
+					    <p:column headerText="Surface">
+					        <h:outputText value="#{ecole.surface}" />
+					    </p:column>
+					</p:dataTable>
+			</div>
 
-    <f:facet name="middle">
-        <h:outputScript library="primefaces" name="jquery/jquery.js" />
-    </f:facet>
-
-</h:head>
-<body>
-#{EcoleController.ecoles}
-	<c:forEach var="Ecole" items="#{EcoleController.ecoles}">
-    	<b>#{Ecole.getNomEtablissement}</b>
-	</c:forEach>
-</body>
-</f:view>
-</html>
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>

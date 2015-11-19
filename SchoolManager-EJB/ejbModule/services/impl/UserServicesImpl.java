@@ -14,19 +14,19 @@ public class UserServicesImpl implements UserServices{
 	private EntityManager em;
 	
 	/***
-	 * Retourne l'utilisateur correspondant aux mdp et mail donnés
+	 * Retourne l'utilisateur correspondant aux mdp et mail donnï¿½s
 	 */
 	@Override
 	public User getUser(String mail, String motDePasse) {
 		
-		//Requête JPA
+		//Requï¿½te JPA
 		User user = (User)em.createQuery("SELECT u From User u Where u.mail LIKE :mail AND u.motDePasse LIKE :mdp ")
 				.setParameter("mail", mail)
 				.setParameter("mdp", motDePasse)
 				.setMaxResults(1)
 				.getSingleResult();
 		
-		if(user == null)System.out.println("!! Aucun utilisateur trouvé !!");
+		if(user == null)System.out.println("!! Aucun utilisateur trouvï¿½ !!");
 		
 		return user;
 	}

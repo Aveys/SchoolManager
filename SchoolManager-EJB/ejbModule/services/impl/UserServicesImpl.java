@@ -1,6 +1,8 @@
 package services.impl;
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -8,6 +10,8 @@ import javax.persistence.Query;
 import entities.User;
 import services.UserServices;
 
+@Stateful
+@LocalBean
 public class UserServicesImpl implements UserServices{
 
 	@PersistenceContext(name = "SchoolManager-Entity")
@@ -19,7 +23,7 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User getUser(String mail, String motDePasse) {
 		
-		//Requï¿½te JPA
+		//RequÃ¨te JPA
 		User user = (User)em.createQuery("SELECT u From User u Where u.mail LIKE :mail AND u.motDePasse LIKE :mdp ")
 				.setParameter("mail", mail)
 				.setParameter("mdp", motDePasse)
@@ -52,7 +56,7 @@ public class UserServicesImpl implements UserServices{
 		//
 		User oldUser = em.find(User.class,user.getIdUser());
 		
-		//Met à jour les champs de l'entité
+		//Met Ã  jour les champs de l'entitï¿½
 		oldUser.setMail(user.getMail());
 		oldUser.setMotDePasse(user.getMotDePasse());
 		oldUser.setNom(user.getNom());

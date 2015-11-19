@@ -21,16 +21,18 @@ public class UserController {
 	@EJB
 	private UserServices userService;
 		
+	private User user = new User();
+	
 	public void CheckUser(LoginSubmission login){
 		UserServicesImpl userServices = new UserServicesImpl();
 		
 		User user = userServices.getUser(login.getMail(), login.getMotDePasse());
 		
 		if(user != null){
-			 //r�cup�re l'espace de m�moire de JSF
+			 //récupère l'espace de mémoire de JSF
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
             Map<String, Object> sessionMap = externalContext.getSessionMap();
-            //place l'utilisateur dans l' espace  de m�moire de JSF
+            //place l'utilisateur dans l' espace  de mémoire de JSF
             sessionMap.put("loggedUser", user);
             //redirect the current page
             FacesContext context = FacesContext.getCurrentInstance();
@@ -46,7 +48,13 @@ public class UserController {
         }
 	}
 
-
+	private User getUser(){
+		return user;
+	}
+	
+	private void saveUser(User user){
+		userService.addUser(user);
+	}
 
 	public List<User> listUser() {
 		return userService.getListUser();

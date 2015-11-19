@@ -2,6 +2,8 @@ package services.impl;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,7 +12,9 @@ import javax.persistence.Query;
 import entities.Ecole;
 import services.EcoleServices;
 
-@Stateless
+
+@Stateful
+@LocalBean
 public class EcoleServicesImpl implements EcoleServices {
 
 	@PersistenceContext(name = "SchoolManager-Web")
@@ -28,7 +32,7 @@ public class EcoleServicesImpl implements EcoleServices {
 				.setParameter("id", idEcole)
 				.setMaxResults(1)
 				.getSingleResult();
-		if(ecole == null)System.out.println("!! Aucune école trouvée !!");
+		if(ecole == null)System.out.println("!! Aucune ï¿½cole trouvï¿½e !!");
 		return ecole;
 	}
 

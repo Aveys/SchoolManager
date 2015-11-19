@@ -2,6 +2,8 @@ package services.impl;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -10,6 +12,8 @@ import entities.Classe;
 import entities.User;
 import services.ClasseServices;
 
+@Stateful
+@LocalBean
 public class ClasseServicesImpl implements ClasseServices{
 	
 	@PersistenceContext(name = "SchoolManager-Entity")

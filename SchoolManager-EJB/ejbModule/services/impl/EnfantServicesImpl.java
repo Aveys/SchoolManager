@@ -14,7 +14,7 @@ import services.EnfantServices;
 
 @Stateful
 @LocalBean
-public class EnfantServiceImpl implements EnfantServices{
+public class EnfantServicesImpl implements EnfantServices{
 	
 	@PersistenceContext(name = "SchoolManager-Entity")
 	private EntityManager em;

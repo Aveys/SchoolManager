@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entities.Classe;
-import entities.User;
 import services.ClasseServices;
 
 @Stateful
@@ -20,9 +19,13 @@ public class ClasseServicesImpl implements ClasseServices{
 	private EntityManager em;
 	
 	@Override
-	public User getClasse(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Classe getClasse(int id) {
+		Classe classe = (Classe)em.createQuery("SELECT u From Enfant u Where u.id LIKE :id")
+				.setParameter("id", id);
+		
+		if(classe == null)System.out.println("!! Aucune classe trouvé !!");
+		
+		return classe;
 	}
 
 	@Override

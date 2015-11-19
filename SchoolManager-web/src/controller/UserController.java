@@ -48,11 +48,11 @@ public class UserController {
         }
 	}
 
-	private User getUser(){
+	public User getUser(){
 		return user;
 	}
 	
-	private void saveUser(User user){
+	public void saveUser(User user){
 		userService.addUser(user);
 	}
 

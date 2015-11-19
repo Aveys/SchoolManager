@@ -2,14 +2,22 @@ package controller;
 
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+
 import entities.Enfant;
 import services.impl.ClasseServicesImpl;
 import services.impl.EnfantServicesImpl;
 
+@ManagedBean
 public class EnfantController {
 	
-	public List<Enfant> getEnfants() {
-		EnfantServicesImpl enfServ = new EnfantServicesImpl();
+
+	@EJB
+	private EnfantServicesImpl enfServ;
+	
+	public List<Enfant> listEnfants() {
+		System.out.println("Enfant");
 		return enfServ.getListEnfant();
 	}
 	

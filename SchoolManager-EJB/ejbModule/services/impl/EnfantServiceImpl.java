@@ -48,5 +48,16 @@ public class EnfantServiceImpl implements EnfantServices{
 		Query query = em.createQuery("SELECT u FROM Enfant u WHERE u.id_classe LIKE :id").setParameter("id", idClasse);
 		return query.getResultList();
 	}
+	
+	public void editEnfant(Enfant modif) {
+		Enfant enf = em.find(Enfant.class, modif.getIdPersonne());
+		
+		em.getTransaction().begin();
+		enf.setNom(modif.getNom());
+		enf.setPrenom(modif.getPrenom());
+		enf.setTEClasseCla(modif.getTEClasseCla());
+		enf.setDateNaissance(modif.getDateNaissance());
+		em.getTransaction().commit();
+	}
 
 }

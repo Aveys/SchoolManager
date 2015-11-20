@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
+import entities.Classe;
 import entities.Enfant;
 import services.impl.ClasseServicesImpl;
 import services.impl.EnfantServicesImpl;
@@ -15,6 +16,7 @@ public class EnfantController {
 
 	@EJB
 	private EnfantServicesImpl enfServ;
+	private ClasseServicesImpl claServ;
 	
 	public List<Enfant> listEnfants() {
 		System.out.println("Enfant");
@@ -22,8 +24,11 @@ public class EnfantController {
 	}
 	
 	public String getClasse(int id) {
-		ClasseServicesImpl claServ = new ClasseServicesImpl();
 		return Integer.toString(claServ.getClasse(id).getNumClasse());
+	}
+	
+	public List<Classe> getClasses() {
+		return (claServ.getListClasse());
 	}
 
 }

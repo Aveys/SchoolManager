@@ -127,3 +127,6 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
+
+SchoolManager-web/WebContent/META-INF/MANIFEST.MF
+.tern-project

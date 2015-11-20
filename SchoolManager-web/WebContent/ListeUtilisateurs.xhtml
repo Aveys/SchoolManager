@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Title <small>Description</small>
+					</h1>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+				<p:dataTable var="user" value="#{userController.listUser()}">
+				    <p:column headerText="First name">
+				        <h:outputText value="#{user.mail}" />
+				    </p:column>
+				    <p:column headerText="Nom">
+				        <h:outputText value="#{user.nom}" />
+				    </p:column>
+				    <p:column headerText="Mail">
+				        <h:outputText value="#{user.mail}" />
+				    </p:column>
+				</p:dataTable>
+
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>

@@ -8,8 +8,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-
 import entities.User;
 import model.LoginSubmission;
 import services.UserServices;
@@ -20,19 +18,20 @@ public class UserController {
 
 	@EJB
 	private UserServices userService;
-		
+
 	private User user = new User();
-	
+
 	public void CheckUser(LoginSubmission login){
 		UserServicesImpl userServices = new UserServicesImpl();
-		
+
 		User user = userServices.getUser(login.getMail(), login.getMotDePasse());
-		
+
 		if(user != null){
 			 //récupère l'espace de mémoire de JSF
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
             Map<String, Object> sessionMap = externalContext.getSessionMap();
             //place l'utilisateur dans l' espace  de mémoire de JSF
+
             sessionMap.put("loggedUser", user);
             //redirect the current page
             FacesContext context = FacesContext.getCurrentInstance();
@@ -51,7 +50,7 @@ public class UserController {
 	public User getUser(){
 		return user;
 	}
-	
+
 	public void saveUser(User user){
 		userService.addUser(user);
 	}
@@ -59,6 +58,6 @@ public class UserController {
 	public List<User> listUser() {
 		return userService.getListUser();
 	}
-	
-	
+
+
 }

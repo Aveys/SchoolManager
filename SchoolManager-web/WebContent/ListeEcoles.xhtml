@@ -30,12 +30,37 @@
 					        <h:outputText value="#{ecole.adresse}" />
 					    </p:column>
 					    
+					    <p:column headerText="Responsable">
+					    	<h:outputText value="#{ecole.TEEnseignantEn.prenom} " />
+					        <h:outputText value="#{ecole.TEEnseignantEn.nom}" />
+					    </p:column>
+					    
 					    <p:column headerText="Email">
 					        <h:outputText value="#{ecole.email}" />
 					    </p:column>
 					    
+					    <p:column headerText="Téléphone">
+					        <h:outputText value="#{ecole.num_Telephone}" />
+					    </p:column>
+					    
+					    <p:column headerText="Fax">
+					        <h:outputText value="#{ecole.fax}" />
+					    </p:column>
+					    
 					    <p:column headerText="Surface">
 					        <h:outputText value="#{ecole.surface}" />
+					    </p:column>
+					    
+					    <p:column headerText="Nombre de Salles">
+					        <h:outputText value="#{ecole.nombreSalles}" />
+					    </p:column>
+					    
+					    <p:column headerText="Liste des Classes">
+					    	<p:dataTable var="classe" value="#{ecoleController.ecole.getTEClasseClas()}" >
+					    		<p:column headerText="Nom">
+							        <h:outputText value="#{classe.numClasse}" />
+							    </p:column>
+						    </p:dataTable>
 					    </p:column>
 					</p:dataTable>
 			</div>

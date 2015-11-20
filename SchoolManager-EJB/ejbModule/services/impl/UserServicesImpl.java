@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Droit;
 import entities.User;
 import services.UserServices;
 
@@ -36,8 +37,10 @@ public class UserServicesImpl implements UserServices{
 	}
 
 	@Override
-	public void addUser(User user) {
+	public void addUser(User user, int idDroit) {
 		
+		Droit droit = em.getReference(Droit.class, idDroit);
+		user.setTRDroitsDro(droit);
 		em.persist(user);
 		
 	}
@@ -52,7 +55,6 @@ public class UserServicesImpl implements UserServices{
 
 	@Override
 	public void updateUser(User user) {
-		
 		//
 		User oldUser = em.find(User.class,user.getIdUser());
 		

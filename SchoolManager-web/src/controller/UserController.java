@@ -8,10 +8,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
+import entities.Droit;
 import entities.User;
 import model.LoginSubmission;
+import services.DroitServices;
 import services.UserServices;
 import services.impl.UserServicesImpl;
 
@@ -20,8 +21,12 @@ public class UserController {
 
 	@EJB
 	private UserServices userService;
+
+	@EJB
+	private DroitServices droitService;
 		
 	private User user = new User();
+	private int idDroit = 2;
 	
 	public void CheckUser(LoginSubmission login){
 		UserServicesImpl userServices = new UserServicesImpl();
@@ -48,12 +53,25 @@ public class UserController {
         }
 	}
 
+	public List<Droit> listDroit(){
+		return droitService.getListDroit();
+	}
+	
+	public int getIdDroit(){
+		return idDroit;
+	}
+	
+	public void setIdDroit(int droit){
+		idDroit = droit;
+	}
+	
 	public User getUser(){
 		return user;
 	}
 	
-	public void saveUser(User user){
-		userService.addUser(user);
+	public void saveUser(User user,int droit){
+		System.out.println("Ajout!");
+		userService.addUser(user,droit);
 	}
 
 	public List<User> listUser() {

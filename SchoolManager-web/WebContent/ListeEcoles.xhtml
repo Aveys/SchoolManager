@@ -56,11 +56,8 @@
 					    </p:column>
 					    
 					    <p:column headerText="Liste des Classes">
-					    	<p:dataTable var="classe" value="#{ecoleController.ecole.getTEClasseClas()}" >
-					    		<p:column headerText="Nom">
-							        <h:outputText value="#{classe.numClasse}" />
-							    </p:column>
-						    </p:dataTable>
+					    	<!-- TODO : lien vers la liste des classes -->
+					    	<h:link value="liste des classes" outcome="ListeUtilisateurs.xhtml" />
 					    </p:column>
 					</p:dataTable>
 			</div>

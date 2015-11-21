@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -16,7 +17,8 @@ import services.DroitServices;
 import services.UserServices;
 import services.impl.UserServicesImpl;
 
-@ManagedBean
+@ManagedBean(name="userController")
+@RequestScoped
 public class UserController {
 
 	@EJB

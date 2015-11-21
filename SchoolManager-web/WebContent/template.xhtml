@@ -43,12 +43,12 @@
                             <h:form role="menu" id="formLogin">
 
                                 <div class="form-group">
-                                    <h:inputText name="mail" styleClass="form-control" value="#{LoginSubmission.mail}" id="username" type="mail" a:placeholder="Mail" required="true"/>
+                                    <h:inputText name="mail" styleClass="form-control" value="#{loginSubmission.mail}" id="mail" type="mail" a:placeholder="mail" required="true"/>
                                 </div>
                                 <div class="form-group">
-                                    <h:inputSecret name="password" styleClass="form-control" value="#{LoginSubmission.motDePasse}" id="password" type="password" a:placeholder="Password" required="true"/>
+                                    <h:inputSecret name="password" styleClass="form-control" value="#{loginSubmission.motDePasse}" id="password" type="password" a:placeholder="password" required="true"/>
                                 </div>
-                                <p:commandButton  id="btnLogin" styleClass="btn btn-default" value="Sign in!" actionListener="#{UserController.checkUser(LoginSubmission)}"/>
+                                <p:commandButton  id="btnLogin" styleClass="btn btn-default" value="Sign in!" actionListener="#{userController.checkUser(loginSubmission)}"/>
                             </h:form>
                             </div>
                         </c:if>

@@ -55,6 +55,25 @@ public class UserController {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Cannot connect."));
         }
 	}
+	
+	public String saveUser(User user,int droit){
+		userService.addUser(user,droit);
+		
+		return "ListeUtilisateurs";
+	}
+	
+	public String detailsUtilisateur(int idUtilisateur){
+		
+		user = userService.findUser(idUtilisateur);
+		
+		return "DetailsUtilisateur";
+	}
+	
+	public String updateUtilisateur(User updatedUser,int droit){
+		userService.updateUser(updatedUser,droit);
+		
+		return "DetailsUtilisateurs";
+	}
 
 	public List<Droit> listDroit(){
 		return droitService.getListDroit();
@@ -72,14 +91,8 @@ public class UserController {
 		return user;
 	}
 	
-	public void saveUser(User user,int droit){
-		System.out.println("Ajout!");
-		userService.addUser(user,droit);
-	}
-
 	public List<User> listUser() {
 		return userService.getListUser();
 	}
-
-
+	
 }

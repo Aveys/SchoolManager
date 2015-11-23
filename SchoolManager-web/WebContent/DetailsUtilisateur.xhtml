@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Title <small>Description</small>
+					</h1>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+				<h:form>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel value="Nom" />
+						<p:inputText required="true" value="#{userController.user.nom}"></p:inputText>
+						<p:outputLabel value="Prenom" />
+						<p:inputText required="true" value="#{userController.user.prenom}"></p:inputText>
+						<p:outputLabel value="Email" />
+						<p:inputText required="true" value="#{userController.user.mail}"></p:inputText>
+						<p:outputLabel value="Droits" />
+						<p:selectOneMenu required="true" id="droit" value="#{userController.idDroit}">
+				            <f:selectItems value="#{userController.listDroit()}" var="_droit" itemValue="#{_droit.idDroit}" itemLabel="#{_droit.libelle}"/>
+				        </p:selectOneMenu>
+						<p:outputLabel value="Mot de passe" />
+						<p:password required="true" value="#{userController.user.motDePasse}"></p:password>			  
+						<p:outputLabel></p:outputLabel>
+						<p:commandButton value="Enregistrer"
+							action="#{userController.updateUtilisateur(userController.user,userController.idDroit)}"></p:commandButton>
+					</h:panelGrid>
+				</h:form>
+
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>

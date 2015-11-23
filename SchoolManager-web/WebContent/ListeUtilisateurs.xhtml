@@ -17,18 +17,25 @@
 			<!-- /.row -->
 
 			<div class="row">
-				<p:dataTable var="user" value="#{userController.listUser()}">
-				    <p:column headerText="First name">
-				        <h:outputText value="#{user.mail}" />
-				    </p:column>
-				    <p:column headerText="Nom">
-				        <h:outputText value="#{user.nom}" />
-				    </p:column>
-				    <p:column headerText="Mail">
-				        <h:outputText value="#{user.mail}" />
-				    </p:column>
-				</p:dataTable>
-
+   				<h:form id="form">
+					<p:dataTable var="user" value="#{userController.listUser()}">
+					    <p:column headerText="First name">
+					        <h:outputText value="#{user.mail}" />
+					    </p:column>
+					    <p:column headerText="Nom">
+					        <h:outputText value="#{user.nom}" />
+					    </p:column>
+					    <p:column headerText="Mail">
+					        <h:outputText value="#{user.mail}" />
+					    </p:column>
+					    <p:column headerText="">
+					    <h:commandLink id="link" action="#{userController.detailsUtilisateur(user.idUser)}" >
+					        <i class="fa fa-fw fa-edit"></i> </h:commandLink>
+				        <h:commandLink id="link2" action="#{userController.detailsUtilisateur(user.idUser)}" >
+				        <i class="fa fa-fw fa-trash"></i> </h:commandLink>
+					    </p:column>
+					</p:dataTable>
+				</h:form>
 			</div>
 
 		</div>

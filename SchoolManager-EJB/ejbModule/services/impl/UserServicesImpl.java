@@ -19,7 +19,7 @@ public class UserServicesImpl implements UserServices{
 	private EntityManager em;
 	
 	/***
-	 * Retourne l'utilisateur correspondant aux mdp et mail donn�s
+	 * Retourne l'utilisateur correspondant aux mdp et mail donnés
 	 */
 	@Override
 	public User getUser(String mail, String motDePasse) {
@@ -36,6 +36,9 @@ public class UserServicesImpl implements UserServices{
 		return user;
 	}
 
+	/***
+	 * Ajoute un utilisateur au model
+	 */
 	@Override
 	public void addUser(User user, int idDroit) {
 		
@@ -45,6 +48,9 @@ public class UserServicesImpl implements UserServices{
 		
 	}
 
+	/***
+	 * Retourne la liste des utilisateur enregistrés dans la BDD
+	 */
 	@Override
 	public List<User> getListUser() {
 		
@@ -52,21 +58,33 @@ public class UserServicesImpl implements UserServices{
 		return query.getResultList();
 		
 	}
-
+	
+	/***
+	 * Met à jour un uilisateur 
+	 */
 	@Override
-	public void updateUser(User user) {
+	public void updateUser(User user, int idDroit) {
 		//
-		User oldUser = em.find(User.class,user.getIdUser());
+		int idUser = user.getIdUser();
+		User oldUser = findUser(idUser);
+
+		Droit droit = em.getReference(Droit.class, idDroit);
 		
-		//Met à jour les champs de l'entit�
+		//Met à jour les champs de l'entité
 		oldUser.setMail(user.getMail());
 		oldUser.setMotDePasse(user.getMotDePasse());
 		oldUser.setNom(user.getNom());
 		oldUser.setPrenom(user.getPrenom());
-		oldUser.setTRDroitsDro(user.getTRDroitsDro());
+		oldUser.setTRDroitsDro(droit);	
+	}
+
+	/***
+	 * Retrouve un utilisateur par son id
+	 */
+	@Override
+	public User findUser(int idUser) {
 		
-		em.getTransaction().commit();
-		
+		return em.find(User.class, idUser);
 	}
 
 }

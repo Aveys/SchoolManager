@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html">
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+		<style>
+.wrapper {
+	margin-top: 80px;
+	margin-bottom: 20px;
+}
+
+.form-signin {
+	max-width: 420px;
+	padding: 30px 38px 66px;
+	margin: 0 auto;
+	background-color: #eee;
+	border: 3px dotted rgba(0, 0, 0, 0.1);
+}
+
+.form-signin-heading {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+}
+
+input[type="text"] {
+	margin-bottom: 0px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+	margin-bottom: 20px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.colorgraph {
+	height: 7px;
+	border-top: 0;
+	background: #c4e17f;
+	border-radius: 5px;
+	background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%,
+		#f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%,
+		#db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%,
+		#669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+	background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca
+		25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe
+		50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1
+		87.5%, #62c2e4 87.5%, #62c2e4);
+}
+</style>
+		<title>School Manager - Connexion</title>
+
+		<f:facet name="middle">
+			<h:outputScript library="primefaces" name="jquery/jquery.js" />
+		</f:facet>
+
+	</h:head>
+	<body>
+
+		<div class="container">
+			<div class="wrapper">
+				<h:form role="menu" id="formLogin">
+					<h3 class="form-signin-heading">Veuillez vous connecter</h3>
+					<hr class="colorgraph"/>
+					<br/> 
+					<h:inputText name="mail" styleClass="form-control" value="#{userController.loginSubmission.mail}" id="mail" type="email" a:placeholder="mail" required="true"/>
+					<h:inputSecret name="password" styleClass="form-control" value="#{userController.loginSubmission.motDePasse}" id="password" type="password" a:placeholder="password" required="true"/>
+					<h:commandButton  id="btnLogin" styleClass="btn btn-default" value="Se connecter!" actionListener="#{userController.checkUser(userController.loginSubmission)}"/>
+				</h:form>
+			</div>
+		</div>
+		<script src="js/bootstrap.min.js" type="text/javascript" />
+	</body>
+</f:view>
+</html>

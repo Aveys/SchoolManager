@@ -17,7 +17,7 @@ public class Enfant implements Serializable {
 
 	@Id
 	@Column(name="id_personne")
-	private int idPersonne;
+	private Integer idPersonne;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_naissance")
@@ -45,11 +45,11 @@ public class Enfant implements Serializable {
 	public Enfant() {
 	}
 
-	public int getIdPersonne() {
+	public Integer getIdPersonne() {
 		return this.idPersonne;
 	}
 
-	public void setIdPersonne(int idPersonne) {
+	public void setIdPersonne(Integer idPersonne) {
 		this.idPersonne = idPersonne;
 	}
 

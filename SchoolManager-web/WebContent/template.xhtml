@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SchoolManager <i>Beta</i></a>
+                <a class="navbar-brand" href="home.xhtml">SchoolManager <i>Beta</i></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     <h:inputSecret name="password" styleClass="form-control" value="#{userController.loginSubmission.motDePasse}" id="password" type="password" a:placeholder="password" required="true"/>
                                 </div>
-                                <p:commandButton  id="btnLogin" styleClass="btn btn-default" value="Sign in!" actionListener="#{userController.checkUser(userController.loginSubmission)}"/>
+                                <h:commandButton  id="btnLogin" styleClass="btn btn-default" value="Sign in!" actionListener="#{userController.checkUser(userController.loginSubmission)}"/>
                             </h:form>
                             </div>
                         </c:if>
@@ -58,7 +58,7 @@
                                 <div>
                                     <p>Welcome <h:outputText value="#{sessionScope.loggedUser.nom}"/></p>
                                     <h:form>
-                                        <p:commandButton  actionListener="#{userController.logout()}" styleClass="" value="Logout"></p:commandButton>
+                                        <h:commandButton  styleClass="btn btn-default" actionListener="#{userController.logout()}" value="Logout"></h:commandButton>
                                     </h:form>
                                 </div>
                             </div>
@@ -102,17 +102,19 @@
                     <li>
                         <a href="bootstrap-grid.html"><i class="icon-sidebar fa fa-fw fa-upload"></i> Export</a>
                     </li>
+                    <c:if test="#{not empty sessionScope.loggedUser}">
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown exemple <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Administration <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="ListeUtilisateurs.xhtml"><i class="icon-sidebar fa fa-fw fa-users"></i>Gestion des utilisateurs</a>
                             </li>
                             <li>
                                 <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
                     </li>
+                    </c:if>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

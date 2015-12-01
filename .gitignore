@@ -131,3 +131,7 @@ local.properties
 SchoolManager-web/WebContent/META-INF/MANIFEST.MF
 .tern-project
 .recommenders/
+
+*.frq
+
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/segments.gen

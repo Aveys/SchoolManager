@@ -5,12 +5,12 @@ import java.util.List;
 import javax.ejb.Local;
 
 import entities.Classe;
-import entities.User;
+
 
 @Local
 public interface ClasseServices {
 	
 	public Classe getClasse(int id);
-	public void addClasse(Classe classe);
-	public List<Classe> getListClasse();
+	public void addClasse(Classe classe,int idEcole, int idEnseignant, int idNiveau);
+	public List<Classe> getListClasses();
 }

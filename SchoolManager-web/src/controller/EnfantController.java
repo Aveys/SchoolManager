@@ -28,7 +28,7 @@ public class EnfantController {
 	}
 	
 	public List<Classe> getClasses() {
-		return (claServ.getListClasse());
+		return (claServ.getListClasses());
 	}
 
 }

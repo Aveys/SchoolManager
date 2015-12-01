@@ -25,14 +25,23 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User getUser(String mail, String motDePasse) {
 		
+		System.out.println("Requete avec ces param : "+mail+","+motDePasse);
 		//Requète JPA
-		User user = (User)em.createQuery("SELECT u From User u Where u.mail LIKE :mail AND u.motDePasse LIKE :mdp ")
-				.setParameter("mail", mail)
-				.setParameter("mdp", motDePasse)
-				.setMaxResults(1)
-				.getSingleResult();
+		User user=null;
+		try {
+			user = (User)em.createQuery("SELECT u From User u Where u.mail LIKE :mail AND u.motDePasse LIKE :mdp ")
+					.setParameter("mail", mail)
+					.setParameter("mdp", motDePasse)
+					.setMaxResults(1)
+					.getSingleResult();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("ERROR BALNAVE");
+		}
 		
-		if(user == null)System.out.println("!! Aucun utilisateur trouv� !!");
+
+		if(user == null)System.out.println("!! Aucun utilisateur trouvé !!");
 		em.flush();
 		return user;
 	}

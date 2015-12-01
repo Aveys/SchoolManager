@@ -26,15 +26,14 @@ public class UserController {
 
 	@EJB
 	private DroitServices droitService;
-		
+	private LoginSubmission loginSubmission = new LoginSubmission();
 	private User user = new User();
 	private int idDroit = 2;
 	
-	public void CheckUser(LoginSubmission login){
-		UserServicesImpl userServices = new UserServicesImpl();
+	public String checkUser(LoginSubmission login){
 
-		User user = userServices.getUser(login.getMail(), login.getMotDePasse());
-
+		User user = userService.getUser(login.getMail(), login.getMotDePasse());
+		System.out.println(user);
 		if(user != null){
 			 //récupère l'espace de mémoire de JSF
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -54,6 +53,7 @@ public class UserController {
 
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Cannot connect."));
         }
+		return "home";
 	}
 	
 	public String saveUser(User user,int droit){
@@ -100,6 +100,14 @@ public class UserController {
 	
 	public List<User> listUser() {
 		return userService.getListUser();
+	}
+
+	public LoginSubmission getLoginSubmission() {
+		return loginSubmission;
+	}
+
+	public void setLoginSubmission(LoginSubmission loginSubmission) {
+		this.loginSubmission = loginSubmission;
 	}
 	
 }

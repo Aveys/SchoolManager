@@ -17,13 +17,13 @@ public class Classe implements Serializable {
 
 	@Id
 	@Column(name="id_classe")
-	private int idClasse;
+	private Integer idClasse;
 
 	@Column(name="num_classe")
-	private int numClasse;
+	private Integer numClasse;
 
 	@Column(name="num_salle")
-	private int numSalle;
+	private Integer numSalle;
 
 	//bi-directional many-to-one association to Enseignant
 	@ManyToOne
@@ -47,27 +47,27 @@ public class Classe implements Serializable {
 	public Classe() {
 	}
 
-	public int getIdClasse() {
+	public Integer getIdClasse() {
 		return this.idClasse;
 	}
 
-	public void setIdClasse(int idClasse) {
+	public void setIdClasse(Integer idClasse) {
 		this.idClasse = idClasse;
 	}
 
-	public int getNumClasse() {
+	public Integer getNumClasse() {
 		return this.numClasse;
 	}
 
-	public void setNumClasse(int numClasse) {
+	public void setNumClasse(Integer numClasse) {
 		this.numClasse = numClasse;
 	}
 
-	public int getNumSalle() {
+	public Integer getNumSalle() {
 		return this.numSalle;
 	}
 
-	public void setNumSalle(int numSalle) {
+	public void setNumSalle(Integer numSalle) {
 		this.numSalle = numSalle;
 	}
 

@@ -28,7 +28,7 @@ public class EcoleServicesImpl implements EcoleServices {
 		/**
 		 * Requete JPA
 		 */
-		Ecole ecole = (Ecole) em.createQuery("SELECT e From Ecole e Where e.id_ecole = :id")
+		Ecole ecole = (Ecole) em.createQuery("SELECT e From Ecole e Where e.idEcole = :id")
 				.setParameter("id", idEcole)
 				.setMaxResults(1)
 				.getSingleResult();
@@ -49,7 +49,6 @@ public class EcoleServicesImpl implements EcoleServices {
 
 	@Override
 	public void updateEcole(Ecole ecole) {
-		
 		int idEcole = ecole.getIdEcole();
 		Ecole oldEcole = getEcole(idEcole);
 		
@@ -57,7 +56,7 @@ public class EcoleServicesImpl implements EcoleServices {
 		oldEcole.setAdresse(ecole.getAdresse());
 		oldEcole.setEmail(ecole.getEmail());
 		oldEcole.setFax(ecole.getFax());
+		oldEcole.setSurface(ecole.getSurface());
 	}
-
 	
 }

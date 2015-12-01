@@ -2,20 +2,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core"
-	 template="template.xhtml">
+	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml">
 	<ui:define name="content">
 		<div class="container-fluid">
 			<!-- Page Heading -->
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="page-header">
-						Title <small>Description</small>
+						Ecole <small>Ajout</small>
 					</h1>
 				</div>
 			</div>
-			<!-- /.row -->
-
 			<div class="row">
 				<h:form>
 					<h:panelGrid columns="2" cellpadding="5">
@@ -24,18 +21,17 @@
 						<p:outputLabel value="Adresse" />
 						<p:inputText required="true" value="#{ecoleController.ecole.adresse}"></p:inputText>
 						<p:outputLabel value="Email" />
-						<p:inputText required="true" value="#{ecoleController.ecole.email}"></p:inputText>
-						<p:outputLabel value="Telephone" />
-						<p:inputText required="true" value="#{ecoleController.ecole.num_Telephone}"></p:inputText>
-						<p:outputLabel value="Surface" />
-						<p:inputText required="true" value="#{ecoleController.ecole.surface}"></p:inputText>
-						<p:outputLabel value="Enseignant" />
-						<p:inputText required="true" value="#{ecoleController.ecole.TEEnseignantEn.nom}"></p:inputText>
+						<p:inputText required="true" value="#{ecoleController.ecole.mail}"></p:inputText>
+						<p:outputLabel value="Responsable" />
+						<p:selectOneMenu required="true" id="droit" value="#{ecoleController.ecole.TEEnseignantEn}">
+				            <f:selectItems value="#{ecoleController.listEnseignants()}" var="_enseignant" itemValue="#{_enseignant.iidEnseignant}" itemLabel="#{_enseignant.nom}"/>
+				        </p:selectOneMenu>
 						<p:outputLabel></p:outputLabel>
 						<p:commandButton value="Enregistrer"
-							action="#{ecoleController.updateEcole(ecoleController.ecole)}"></p:commandButton>
+							action="#{ecoleController.saveEcole(ecoleController.ecole)}"></p:commandButton>
 					</h:panelGrid>
 				</h:form>
+
 			</div>
 
 		</div>

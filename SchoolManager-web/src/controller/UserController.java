@@ -30,6 +30,7 @@ public class UserController {
 	private LoginSubmission loginSubmission = new LoginSubmission();
 	private User user = new User();
 	private int idDroit = 2;
+	private List<User> filteredUsers;
 	
 	public String checkUser(LoginSubmission login){
 
@@ -122,5 +123,14 @@ public class UserController {
 		}
 	    return "loginPage";
 	}
+	
+	
+	public List<User> getFilteredUsers() {
+        return filteredUsers;
+    }
+ 
+    public void setFilteredUsers(List<User> filteredUsers) {
+        this.filteredUsers = filteredUsers;
+    }
 	
 }

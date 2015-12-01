@@ -31,13 +31,16 @@
 						<p:outputLabel value="Surface" />
 						<p:inputText required="true" value="#{ecoleController.ecole.surface}"></p:inputText>
 						<p:outputLabel value="Enseignant" />
-						<p:inputText required="true" value="#{ecoleController.ecole.TEEnseignantEn.nom + ' ' + ecoleController.ecole.TEEnseignantEn.prenom}"></p:inputText>
+						<p:inputText required="true" value="#{ecoleController.ecole.TEEnseignantEn.nom}"></p:inputText>
 						<p:outputLabel></p:outputLabel>
 						<p:commandButton value="Enregistrer"
 							action="#{ecoleController.updateEcole(ecoleController.ecole)}"></p:commandButton>
 					</h:panelGrid>
 				</h:form>
+
+
 </div>
+
 			</div>
 
 		</div>

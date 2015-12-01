@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Ecole <small>Ajout</small>
+					</h1>
+				</div>
+			</div>
+			<div class="row">
+				<h:form>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel value="Nom" />
+						<p:inputText required="true" value="#{ecoleController.ecole.nomEtablissement}"></p:inputText>
+						<p:outputLabel value="Adresse" />
+						<p:inputText required="true" value="#{ecoleController.ecole.adresse}"></p:inputText>
+						<p:outputLabel value="Email" />
+						<p:inputText required="true" value="#{ecoleController.ecole.mail}"></p:inputText>
+						<p:outputLabel value="Responsable" />
+						<p:selectOneMenu required="true" id="droit" value="#{ecoleController.ecole.TEEnseignantEn}">
+				            <f:selectItems value="#{ecoleController.listEnseignants()}" var="_enseignant" itemValue="#{_enseignant.iidEnseignant}" itemLabel="#{_enseignant.nom}"/>
+				        </p:selectOneMenu>
+						<p:outputLabel></p:outputLabel>
+						<p:commandButton value="Enregistrer"
+							action="#{ecoleController.saveEcole(ecoleController.ecole)}"></p:commandButton>
+					</h:panelGrid>
+				</h:form>
+
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>

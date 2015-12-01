@@ -30,7 +30,13 @@ public class EcoleController {
 		return service.getEcoles();
 	}
 	
-	public void updateEcole(Ecole ecole){
+	public String updateEcole(Ecole ecole){
 		service.updateEcole(ecole);
+		return "DetailsEcole";
+	}
+	
+	public String detailsEcole(int idEcole){
+		this.ecole = service.getEcole(idEcole);
+		return "DetailsEcole";
 	}
 }

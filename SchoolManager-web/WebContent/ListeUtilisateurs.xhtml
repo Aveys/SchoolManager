@@ -10,7 +10,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="page-header">
-						Title <small>Description</small>
+						Liste <small>Utilisateur</small>
 					</h1>
 				</div>
 			</div>
@@ -25,13 +25,16 @@
 					    <p:column headerText="Nom">
 					        <h:outputText value="#{user.nom}" />
 					    </p:column>
+					    <p:column headerText="Prenom">
+					        <h:outputText value="#{user.prenom}" />
+					    </p:column>
 					    <p:column headerText="Mail">
 					        <h:outputText value="#{user.mail}" />
 					    </p:column>
 					    <p:column headerText="">
 					    <h:commandLink id="link" action="#{userController.detailsUtilisateur(user.idUser)}" >
 					        <i class="fa fa-fw fa-edit"></i> </h:commandLink>
-				        <h:commandLink id="link2" action="#{userController.detailsUtilisateur(user.idUser)}" >
+				        <h:commandLink id="link2" action="#{userController.removeUtilisateur(user.idUser)}" >
 				        <i class="fa fa-fw fa-trash"></i> </h:commandLink>
 					    </p:column>
 					</p:dataTable>

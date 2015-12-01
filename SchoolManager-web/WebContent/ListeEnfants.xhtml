@@ -9,18 +9,18 @@
 	<title>Liste des enfants</title>
 </h:head>
 <h:body>
-	<h:form>
+	<!-- <h:form>
 	    <p:messages autoUpdate="true" />
 		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 	        <p:outputLabel for="classe" value="Classe" />
-	        <p:selectOneMenu id="classe" value="#{EnfantController.getClasses}" style="width:125px">
+	        <p:selectOneMenu id="classe" value="#{EnfantController.listClasses}" style="width:125px">
 	            <f:selectItems itemLabel="Sélectionner une classe" itemValue="classe.numClasse" />
 	        </p:selectOneMenu>
 		</h:panelGrid>
 		<p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
-	</h:form>
+	</h:form> -->
 
-	<p:dataTable var="enfant" value="#{enfantController.getEnfants()}">
+	<p:dataTable var="enfant" value="#{enfantController.listEnfants()}">
 	    <p:column headerText="Nom">
 	        <h:outputText value="#{enfant.nom}" />
 	    </p:column>

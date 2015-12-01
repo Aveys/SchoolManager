@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -18,7 +18,7 @@ import services.UserServices;
 import services.impl.UserServicesImpl;
 
 @ManagedBean(name="userController")
-@RequestScoped
+@SessionScoped
 public class UserController {
 
 	@EJB
@@ -70,9 +70,16 @@ public class UserController {
 	}
 	
 	public String updateUtilisateur(User updatedUser,int droit){
+		
 		userService.updateUser(updatedUser,droit);
 		
-		return "DetailsUtilisateurs";
+		return "ListeUtilisateurs";
+	}
+	
+	public String removeUtilisateur(int idUser){
+		userService.removeUser(idUser);
+		
+		return "ListeUtilisateurs";
 	}
 
 	public List<Droit> listDroit(){

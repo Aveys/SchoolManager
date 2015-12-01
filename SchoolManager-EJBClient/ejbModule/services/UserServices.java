@@ -14,4 +14,5 @@ public interface UserServices {
 	public void addUser(User user, int idDroit);
 	public List<User> getListUser();
 	public void updateUser(User user, int idDroit);
+	public void removeUser(int idUser);
 }

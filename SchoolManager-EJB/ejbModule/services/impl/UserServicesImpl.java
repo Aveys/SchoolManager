@@ -4,6 +4,7 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -32,7 +33,7 @@ public class UserServicesImpl implements UserServices{
 				.getSingleResult();
 		
 		if(user == null)System.out.println("!! Aucun utilisateur trouv� !!");
-		
+		em.flush();
 		return user;
 	}
 
@@ -45,6 +46,7 @@ public class UserServicesImpl implements UserServices{
 		Droit droit = em.getReference(Droit.class, idDroit);
 		user.setTRDroitsDro(droit);
 		em.persist(user);
+		em.flush();
 		
 	}
 
@@ -55,27 +57,24 @@ public class UserServicesImpl implements UserServices{
 	public List<User> getListUser() {
 		
 		Query query = em.createQuery("SELECT u FROM User u");
+		em.flush();
 		return query.getResultList();
 		
 	}
 	
 	/***
-	 * Met à jour un uilisateur 
+	 * Met à jour un utilisateur 
 	 */
 	@Override
 	public void updateUser(User user, int idDroit) {
 		//
 		int idUser = user.getIdUser();
-		User oldUser = findUser(idUser);
 
 		Droit droit = em.getReference(Droit.class, idDroit);
-		
-		//Met à jour les champs de l'entité
-		oldUser.setMail(user.getMail());
-		oldUser.setMotDePasse(user.getMotDePasse());
-		oldUser.setNom(user.getNom());
-		oldUser.setPrenom(user.getPrenom());
-		oldUser.setTRDroitsDro(droit);	
+
+		user.setTRDroitsDro(droit);	
+		em.merge(user);
+		em.flush();
 	}
 
 	/***
@@ -84,7 +83,17 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User findUser(int idUser) {
 		
-		return em.find(User.class, idUser);
+		User user = em.find(User.class, idUser);
+		em.flush();
+		return user;
+	}
+
+	@Override
+	public void removeUser(int idUser) {
+		User user = findUser(idUser);
+		
+		em.remove(user);
+		
 	}
 
 }

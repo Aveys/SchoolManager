@@ -27,8 +27,8 @@ public class EnfantController {
 		return Integer.toString(claServ.getClasse(id).getNumClasse());
 	}
 	
-	public List<Classe> listClasses() {
-		return (claServ.getListClasse());
+	public List<Classe> getClasses() {
+		return (claServ.getListClasses());
 	}
 
 }

@@ -43,12 +43,14 @@ public class EnfantServicesImpl implements EnfantServices{
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Enfant> getListEnfantClasse(int idClasse) {
-		Query query = em.createQuery("SELECT u FROM Enfant u WHERE u.id_classe LIKE :id").setParameter("id", idClasse);
+		System.out.println("____ Enfant Service :  Id classe : "+idClasse); 
+		Query query = em.createQuery("SELECT u FROM Enfant u WHERE u.TEClasseCla.idClasse =:id ", Enfant.class).setParameter("id", idClasse);
 		return query.getResultList();
 	}
-	
+		  
 	public void editEnfant(Enfant modif) {
 		Enfant enf = em.find(Enfant.class, modif.getIdPersonne());
 		

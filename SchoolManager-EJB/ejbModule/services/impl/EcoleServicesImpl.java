@@ -58,6 +58,5 @@ public class EcoleServicesImpl implements EcoleServices {
 		oldEcole.setEmail(ecole.getEmail());
 		oldEcole.setFax(ecole.getFax());
 	}
-
 	
 }

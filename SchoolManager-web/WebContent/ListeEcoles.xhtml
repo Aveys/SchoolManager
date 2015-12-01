@@ -20,8 +20,10 @@
 			<!-- /.row -->
 
 			<div class="row">
+			<div class="col-lg-12">
 				<!-- CONTENT HERE !!!! ASK ME FOR DESIGN HELP -->
-				<p:dataTable var="ecole" value="#{ecoleController.getEcoles()}">
+				<h:form>
+					<p:dataTable var="ecole" value="#{ecoleController.getEcoles()}">
 					    <p:column headerText="Nom">
 					        <h:outputText value="#{ecole.nomEtablissement}" />
 					    </p:column>
@@ -59,9 +61,17 @@
 					    	<!-- TODO : lien vers la liste des classes -->
 					    	<h:link value="liste des classes" outcome="ListeUtilisateurs.xhtml" />
 					    </p:column>
+					    
+					    <p:column headerText="Details">
+					        <h:commandLink id="link" action="#{ecoleController.detailsEcole(ecole.idEcole)}" >
+					        	<i class="fa fa-fw fa-edit"></i> 
+					        </h:commandLink>
+					    </p:column>
 					</p:dataTable>
-			</div>
 
+				</h:form>
+			</div>
+			</div>
 		</div>
 		<!-- /.container-fluid -->
 	</ui:define>

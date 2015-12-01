@@ -9,7 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Droit;
 import entities.Ecole;
+import entities.Enseignant;
 import services.EcoleServices;
 
 
@@ -28,7 +30,7 @@ public class EcoleServicesImpl implements EcoleServices {
 		/**
 		 * Requete JPA
 		 */
-		Ecole ecole = (Ecole) em.createQuery("SELECT e From Ecole e Where e.id_ecole = :id")
+		Ecole ecole = (Ecole) em.createQuery("SELECT e From Ecole e Where e.idEcole = :id")
 				.setParameter("id", idEcole)
 				.setMaxResults(1)
 				.getSingleResult();
@@ -48,15 +50,16 @@ public class EcoleServicesImpl implements EcoleServices {
 	}
 
 	@Override
-	public void updateEcole(Ecole ecole) {
-		
+	public void updateEcole(Ecole ecole, int idEnseignant) {
 		int idEcole = ecole.getIdEcole();
-		Ecole oldEcole = getEcole(idEcole);
-		
-		oldEcole.setNomEtablissement(ecole.getNomEtablissement());
-		oldEcole.setAdresse(ecole.getAdresse());
-		oldEcole.setEmail(ecole.getEmail());
-		oldEcole.setFax(ecole.getFax());
+		Enseignant enseignant = em.getReference(Enseignant.class, idEnseignant);
+		ecole.setTEEnseignantEn(enseignant);	
+		em.merge(ecole);
+		em.flush();
 	}
 	
+	public List<Enseignant> getListEnseignants(){
+		Query query = em.createQuery("SELECT e FROM Enseignant e");
+		return query.getResultList();
+	}
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -29,11 +30,12 @@ public class UserController {
 	private LoginSubmission loginSubmission = new LoginSubmission();
 	private User user = new User();
 	private int idDroit = 2;
+	private List<User> filteredUsers;
 	
 	public String checkUser(LoginSubmission login){
 
 		User user = userService.getUser(login.getMail(), login.getMotDePasse());
-		System.out.println(user);
+		//System.out.println(user);
 		if(user != null){
 			 //récupère l'espace de mémoire de JSF
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -42,17 +44,13 @@ public class UserController {
 
             sessionMap.put("loggedUser", user);
             //redirect the current page
-            FacesContext context = FacesContext.getCurrentInstance();
-
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Successful", "Welcome " + user.getPrenom() + " " + user.getPrenom()));
         }
-        else
-        {
-            //redirect the current page
-            FacesContext context = FacesContext.getCurrentInstance();
-
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Cannot connect."));
-        }
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "home";
 	}
 	
@@ -117,7 +115,22 @@ public class UserController {
         //place l'utilisateur dans l' espace  de mémoire de JSF
         sessionMap.remove("loggedUser");
         //redirect the current page
-	    return "home";
+        try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("loginPage.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return "loginPage";
 	}
+	
+	
+	public List<User> getFilteredUsers() {
+        return filteredUsers;
+    }
+ 
+    public void setFilteredUsers(List<User> filteredUsers) {
+        this.filteredUsers = filteredUsers;
+    }
 	
 }

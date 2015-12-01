@@ -12,7 +12,7 @@
 						Liste des classes
 					</h1>
 					<ol class="breadcrumb">
-						<li class="active"><i class="fa fa-dashboard"></i> Dashboard
+						<li><a href="AjouterClasse.xhtml" role="button" class="btn btn-default"><i class="fa fa-plus-circle"></i> Ajouter une classe</a>
 						</li>
 					</ol>
 				</div>
@@ -20,6 +20,7 @@
 			<!-- /.row -->
 
 			<div class="row">
+			<div class="col-lg-12">
 				<!-- CONTENT HERE !!!! ASK ME FOR DESIGN HELP -->
 				<h:form id="form">
 					<p:dataTable var="classe" value="#{classeController.getListClasses()}" >
@@ -42,6 +43,7 @@
 					    </p:column>
 					</p:dataTable>
 				</h:form>
+				</div>
 			</div>
 
 		</div>

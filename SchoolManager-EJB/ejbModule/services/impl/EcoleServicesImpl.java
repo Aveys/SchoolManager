@@ -47,5 +47,17 @@ public class EcoleServicesImpl implements EcoleServices {
 		return query.getResultList();
 	}
 
+	@Override
+	public void updateEcole(Ecole ecole) {
+		
+		int idEcole = ecole.getIdEcole();
+		Ecole oldEcole = getEcole(idEcole);
+		
+		oldEcole.setNomEtablissement(ecole.getNomEtablissement());
+		oldEcole.setAdresse(ecole.getAdresse());
+		oldEcole.setEmail(ecole.getEmail());
+		oldEcole.setFax(ecole.getFax());
+	}
+
 	
 }

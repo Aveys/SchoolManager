@@ -20,9 +20,17 @@ public class EcoleController {
 	public Ecole getEcole() {
 		return ecole;
 	}
+	
+	public Ecole getEcole(int idEcole) {
+		return service.getEcole(idEcole);
+	}
 
 	
 	public List<Ecole> getEcoles(){
 		return service.getEcoles();
+	}
+	
+	public void updateEcole(Ecole ecole){
+		service.updateEcole(ecole);
 	}
 }

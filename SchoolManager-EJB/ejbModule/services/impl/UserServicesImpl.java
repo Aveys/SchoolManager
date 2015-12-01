@@ -4,6 +4,7 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -24,15 +25,24 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User getUser(String mail, String motDePasse) {
 		
+		System.out.println("Requete avec ces param : "+mail+","+motDePasse);
 		//Requète JPA
-		User user = (User)em.createQuery("SELECT u From User u Where u.mail LIKE :mail AND u.motDePasse LIKE :mdp ")
-				.setParameter("mail", mail)
-				.setParameter("mdp", motDePasse)
-				.setMaxResults(1)
-				.getSingleResult();
+		User user=null;
+		try {
+			user = (User)em.createQuery("SELECT u From User u Where u.mail LIKE :mail AND u.motDePasse LIKE :mdp ")
+					.setParameter("mail", mail)
+					.setParameter("mdp", motDePasse)
+					.setMaxResults(1)
+					.getSingleResult();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("ERROR BALNAVE");
+		}
 		
-		if(user == null)System.out.println("!! Aucun utilisateur trouv� !!");
-		
+
+		if(user == null)System.out.println("!! Aucun utilisateur trouvé !!");
+		em.flush();
 		return user;
 	}
 
@@ -45,6 +55,7 @@ public class UserServicesImpl implements UserServices{
 		Droit droit = em.getReference(Droit.class, idDroit);
 		user.setTRDroitsDro(droit);
 		em.persist(user);
+		em.flush();
 		
 	}
 
@@ -55,27 +66,24 @@ public class UserServicesImpl implements UserServices{
 	public List<User> getListUser() {
 		
 		Query query = em.createQuery("SELECT u FROM User u");
+		em.flush();
 		return query.getResultList();
 		
 	}
 	
 	/***
-	 * Met à jour un uilisateur 
+	 * Met à jour un utilisateur 
 	 */
 	@Override
 	public void updateUser(User user, int idDroit) {
 		//
 		int idUser = user.getIdUser();
-		User oldUser = findUser(idUser);
 
 		Droit droit = em.getReference(Droit.class, idDroit);
-		
-		//Met à jour les champs de l'entité
-		oldUser.setMail(user.getMail());
-		oldUser.setMotDePasse(user.getMotDePasse());
-		oldUser.setNom(user.getNom());
-		oldUser.setPrenom(user.getPrenom());
-		oldUser.setTRDroitsDro(droit);	
+
+		user.setTRDroitsDro(droit);	
+		em.merge(user);
+		em.flush();
 	}
 
 	/***
@@ -84,7 +92,17 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User findUser(int idUser) {
 		
-		return em.find(User.class, idUser);
+		User user = em.find(User.class, idUser);
+		em.flush();
+		return user;
+	}
+
+	@Override
+	public void removeUser(int idUser) {
+		User user = findUser(idUser);
+		
+		em.remove(user);
+		
 	}
 
 }

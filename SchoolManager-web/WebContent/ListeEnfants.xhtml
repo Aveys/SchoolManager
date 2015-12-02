@@ -25,6 +25,7 @@
 							widgetVar="enfantsTable"
 							emptyMessage="Aucun enfant trouvé avec ces critères"
 							filteredValue="#{enfantController.filteredEnfants}">
+							
 							<p:column headerText="Nom">
 								<h:outputText value="#{enfant.nom}" />
 							</p:column>
@@ -37,7 +38,7 @@
 							<p:column style="text-align:center"
 								filterBy="#{enfant.TEClasseCla.numClasse}" headerText="Classe"
 								filterMatchMode="exact">
-								<f:facet name="filter">
+								<f:facet name="filter" style="display:inline-flex">
 									<p:selectOneMenu onchange="PF('enfantsTable').filter()">
 										<f:selectItem itemLabel="All" itemValue="#{null}"
 											noSelectionOption="true" />

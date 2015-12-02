@@ -6,9 +6,11 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import entities.Classe;
 import entities.Droit;
 import entities.Ecole;
 import entities.Enseignant;
+import entities.TypeEcole;
 import services.EcoleServices;
 import services.impl.EcoleServicesImpl;
 
@@ -57,4 +59,16 @@ public class EcoleController {
 		this.idEnseignant = idEnseignant;
 	}
 
+	public List<TypeEcole> getListTypeEcole(int idEcole){
+		return service.getListTypeEcole(idEcole);
+	}
+	
+	public List<Classe> getListClasses(int idEcole){
+		return service.getListClasses(idEcole);
+	}
+	
+	public void deleteEcole(int idEcole){
+		service.deleteEcole(idEcole);
+	}
+	
 }

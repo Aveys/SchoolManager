@@ -26,7 +26,6 @@ public class EnfantController {
 	private ClasseServicesImpl claServ;
 	
 	private List<Enfant> filteredEnfants;
-	private List<Integer> numClasses;
 	private Enfant enfant = new Enfant();
 	
 	public List<Enfant> listEnfants() {
@@ -53,9 +52,6 @@ public class EnfantController {
 		this.filteredEnfants = filteredEnfants;
 	}
 
-	public void setNumClasses(List<Integer> classes) {
-		this.numClasses = classes;
-	}
 	
 	public List<Integer> getNumClasses() {
 		return claServ.getNumListClasses();

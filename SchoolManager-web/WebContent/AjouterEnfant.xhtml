@@ -9,18 +9,23 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="page-header">
-						Details de l'enfant #{enfantController.enfant.nom}
+						Ajout d'un enfant
 					</h1>
 				</div>
 			</div>
-			<!-- /.row -->
-
 			<div class="row">
 			<div class="col-lg-12">
 				<h:form>
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel value="Nom" />
-						<p:inputText required="true" value="#{enfantController.enfant.nom}"></p:inputText>
+						<p:outputLabel value="Famille" />
+       					<f:facet name="filter">
+							<p:selectOneMenu">
+								<f:selectItem itemLabel="" itemValue="#{null}"
+									noSelectionOption="true" />
+								<f:selectItems value="#{enfantController.getNomFamilles()}" />
+							</p:selectOneMenu>
+						</f:facet>
+ 
 						
 						<p:outputLabel value="Prenom" />
 						<p:inputText required="true" value="#{enfantController.enfant.prenom}"></p:inputText>
@@ -33,7 +38,7 @@
 							action="#{enfantController.updateEnfant(enfantController.enfant)}"></p:commandButton>
 					</h:panelGrid>
 				</h:form>
-			</div>
+</div>
 			</div>
 
 		</div>

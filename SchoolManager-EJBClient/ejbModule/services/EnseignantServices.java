@@ -13,4 +13,5 @@ public interface EnseignantServices {
 	public Enseignant getEnseignant(int id);
 	public void addEnseignant(Enseignant enseignant);
 	public List<Enseignant> getListEnseignants();
+	public void removeEnseignant(int idEnseignant);
 }

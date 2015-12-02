@@ -7,6 +7,20 @@
   <param-name>primefaces.THEME</param-name>
   <param-value>bootstrap</param-value>
  </context-param>
+ <!-- Login filter -->
+ <filter>
+  <filter-name>LoginFilter</filter-name>
+  <filter-class>filter.LoginFilter</filter-class>
+ </filter>
+ <!-- Set the login filter to secure all the pages in the /* path of the application  -->
+ <filter-mapping>
+  <filter-name>LoginFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>INCLUDE</dispatcher>
+  <dispatcher>ERROR</dispatcher>
+ </filter-mapping>
  <servlet>
   <servlet-name>facesServlet</servlet-name>
   <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

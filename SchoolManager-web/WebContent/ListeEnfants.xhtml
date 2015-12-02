@@ -1,41 +1,66 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
-<h:head>
-	<title>Liste des enfants</title>
-</h:head>
-<h:body>
-	<!-- <h:form>
-	    <p:messages autoUpdate="true" />
-		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-	        <p:outputLabel for="classe" value="Classe" />
-	        <p:selectOneMenu id="classe" value="#{EnfantController.listClasses}" style="width:125px">
-	            <f:selectItems itemLabel="Sélectionner une classe" itemValue="classe.numClasse" />
-	        </p:selectOneMenu>
-		</h:panelGrid>
-		<p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
-	</h:form> -->
+	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Liste des enfants <small>Liste des enfants</small>
+						<!-- EDIT THIS !!!! ASK ME FOR DESIGN HELP -->
+					</h1>
+				</div>
+			</div>
+			<!-- /.row -->
 
-	<p:dataTable var="enfant" value="#{enfantController.listEnfants()}">
-	    <p:column headerText="Nom">
-	        <h:outputText value="#{enfant.nom}" />
-	    </p:column>
-	 
-	    <p:column headerText="Prenom">
-	        <h:outputText value="#{enfant.prenom}" />
-	    </p:column>
-	    
-	    <p:column headerText="Classe">
-	        <h:outputText value="#{enfantController.getClasse(enfant.TEClasseCla)}" />
-	    </p:column>
-	    
-	    <p:column headerText="Date de naissance">
-	        <h:outputText value="#{enfant.dateNaissance}" />
-	    </p:column>
-	</p:dataTable>
-</h:body>
-</html>
+			<div class="row">
+				<!-- CONTENT HERE !!!! ASK ME FOR DESIGN HELP -->
+				<h:body>
+					<h:form>
+						<p:dataTable var="enfant" value="#{enfantController.listEnfants()}" 
+							widgetVar="enfantsTable" 
+							emptyMessage="No cars found with given criteria"
+							filteredValue="#{enfantController.filteredEnfants}">
+	
+					
+					
+	
+							<p:column headerText="Nom">
+								<h:outputText value="#{enfant.nom}" />
+							</p:column>
+	
+							<p:column headerText="Prenom">
+								<h:outputText value="#{enfant.prenom}" />
+							</p:column>
+	
+	
+							<p:column filterBy="#{enfant.TEClasseCla.numClasse}" headerText="Classe" filterMatchMode="exact">
+								<f:facet name="filter">
+									<p:selectOneMenu onchange="PF('enfantsTable').filter()">
+										<f:selectItem itemLabel="All" itemValue="#{null}"
+											noSelectionOption="true" />
+										<f:selectItems value="#{enfantController.getNumClasses()}" />
+									</p:selectOneMenu>
+								</f:facet>
+								<h:outputText value="#{enfant.TEClasseCla.numClasse}" />
+							</p:column>
+	
+	
+							<p:column headerText="Date de naissance">
+								<h:outputText value="#{enfant.dateNaissance}" />
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</h:body>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>
+
+
+

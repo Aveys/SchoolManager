@@ -63,4 +63,12 @@ public class EcoleController {
 		return service.getListTypeEcole(idEcole);
 	}
 	
+	public List<Classe> getListClasses(int idEcole){
+		return service.getListClasses(idEcole);
+	}
+	
+	public void deleteEcole(int idEcole){
+		service.deleteEcole(idEcole);
+	}
+	
 }

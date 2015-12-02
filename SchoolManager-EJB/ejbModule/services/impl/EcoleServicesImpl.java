@@ -67,9 +67,25 @@ public class EcoleServicesImpl implements EcoleServices {
 
 	@Override
 	public List<TypeEcole> getListTypeEcole(int idEcole) {
-		Query query = em.createQuery("SELECT te From TypeEcole te Where te.idEcole = :id")
+		Query query = em.createQuery("SELECT te From TypeEcole te JOIN te.TEEcoleEcos e Where e.idEcole = :id")
 				.setParameter("id", idEcole);
+		System.out.println(query.getResultList());
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Classe> getListClasses(int idEcole){
+		Query query = em.createQuery("SELECT c From Classe c JOIN FETCH c.TEEcoleEco e Where e.idEcole = :id")
+				.setParameter("id", idEcole);
+		System.out.println(query.getResultList());
 		return query.getResultList();
 	}
 
+	@Override
+	public void deleteEcole(int idEcole) {
+		Ecole ecole = getEcole(idEcole);
+		em.remove(ecole);
+		em.flush();
+	}
+	
 }

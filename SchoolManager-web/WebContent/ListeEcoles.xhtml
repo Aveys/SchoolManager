@@ -57,17 +57,27 @@
 					        <h:outputText value="#{ecole.nombreSalles}" />
 					    </p:column>
 					    
-					    <p:column headerText="Liste des Classes">
+					    <p:column headerText="Type d'école">
 					    	<p:dataList var="typeEcole" value="#{ecoleController.getListTypeEcole(ecole.idEcole)}">
-					    		<p:column> 
-					    			<h:outputText value="#{typeEcole.libelle}" />
-					    		</p:column>
+								#{typeEcole.libelle}
+					    	</p:dataList>
+					    </p:column>
+					    
+					    <p:column headerText="Liste des classes">
+					    	<p:dataList var="classe" value="#{ecoleController.getListClasses(ecole.idEcole)}">
+								#{classe.TRNiveauNiv.niveau} 
 					    	</p:dataList>
 					    </p:column>
 
 					    <p:column headerText="Details">
-					        <h:commandLink id="link" action="#{ecoleController.detailsEcole(ecole.idEcole)}" >
+					        <h:commandLink id="displayLink" action="#{ecoleController.detailsEcole(ecole.idEcole)}" >
+					        	<i class="fa fa-fw fa-binoculars"></i> 
+					        </h:commandLink>
+					        <h:commandLink id="editLink" action="#{ecoleController.detailsEcole(ecole.idEcole)}" >
 					        	<i class="fa fa-fw fa-edit"></i> 
+					        </h:commandLink>
+					        <h:commandLink id="deleteLink" action="#{ecoleController.deleteEcole(ecole.idEcole)}" >
+					        	<i class="fa fa-fw fa-remove"></i> 
 					        </h:commandLink>
 					    </p:column>
 					</p:dataTable>

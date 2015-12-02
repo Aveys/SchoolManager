@@ -17,4 +17,6 @@ public interface EcoleServices {
 	public void updateEcole(Ecole ecole, int idEnseignant);
 	public List<Enseignant> getListEnseignants();
 	public List<TypeEcole> getListTypeEcole(int idEcole);
+	public void deleteEcole(int idEcole);
+	public List<Classe> getListClasses(int idEcole);
 }

@@ -1,9 +1,8 @@
-#footer {
-    background-color: #2f2f2f;
-    padding-top: 50px;
+.footer {
     padding-bottom: 50px;
+	padding-top:15px;
+	box-shadow: inset 0px 13px 28px -15px rgba(199,199,199,0.26);
 }
-
 #footer p {
     color: white;
 }
@@ -18,4 +17,10 @@
 }
 .ui-column-customfilter{
 	display:inline-flex;
+}
+.side-nav > li{
+	box-shadow: inset 0px 13px 28px -15px rgba(199,199,199,0.26);
+	border-right-style: solid;
+    border-right-color: #E6E6E6;
+    border-right-width: 10px;
 }

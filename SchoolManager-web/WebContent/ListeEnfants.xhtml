@@ -20,24 +20,23 @@
 				<!-- CONTENT HERE !!!! ASK ME FOR DESIGN HELP -->
 				<h:body>
 					<h:form>
-						<p:dataTable var="enfant" value="#{enfantController.listEnfants()}" 
-							widgetVar="enfantsTable" 
+						<p:dataTable var="enfant"
+							value="#{enfantController.listEnfants()}"
+							widgetVar="enfantsTable"
 							emptyMessage="Aucun enfant trouvé avec ces critères"
 							filteredValue="#{enfantController.filteredEnfants}">
-	
-					
-					
-	
 							<p:column headerText="Nom">
 								<h:outputText value="#{enfant.nom}" />
 							</p:column>
-	
+
 							<p:column headerText="Prenom">
 								<h:outputText value="#{enfant.prenom}" />
 							</p:column>
-	
-	
-							<p:column style="text-align:center" filterBy="#{enfant.TEClasseCla.numClasse}" headerText="Classe" filterMatchMode="exact">
+
+
+							<p:column style="text-align:center"
+								filterBy="#{enfant.TEClasseCla.numClasse}" headerText="Classe"
+								filterMatchMode="exact">
 								<f:facet name="filter">
 									<p:selectOneMenu onchange="PF('enfantsTable').filter()">
 										<f:selectItem itemLabel="All" itemValue="#{null}"
@@ -47,12 +46,13 @@
 								</f:facet>
 								<h:outputText value="#{enfant.TEClasseCla.numClasse}" />
 							</p:column>
-	
-	
-							<p:column style="text-align:center" headerText="Date de naissance">
+
+
+							<p:column style="text-align:center"
+								headerText="Date de naissance">
 								<h:outputText value="#{enfant.dateNaissance}" />
 							</p:column>
-							
+
 							<p:column headerText="">
 								<h:commandLink id="link"
 									action="#{enfantController.detailsEnfant(enfant.idPersonne)}">
@@ -63,7 +63,7 @@
 									<i class="fa fa-fw fa-trash"></i>
 								</h:commandLink>
 							</p:column>
-							
+
 						</p:dataTable>
 					</h:form>
 				</h:body>

@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 
 import entities.Classe;
 import entities.Enfant;
+import entities.User;
 import services.impl.ClasseServicesImpl;
 import services.impl.EnfantServicesImpl;
 
@@ -26,6 +27,7 @@ public class EnfantController {
 	
 	private List<Enfant> filteredEnfants;
 	private List<Integer> numClasses;
+	private Enfant enfant = new Enfant();
 	
 	public List<Enfant> listEnfants() {
 		return enfServ.getListEnfant();
@@ -63,5 +65,27 @@ public class EnfantController {
 	public List<Integer> getNumClasses() {
 		return this.numClasses;
 	}
+	
+	public String detailsEnfant(Integer idPersonne){
+		this.setEnfant(enfServ.findEnfant(idPersonne));
+		return "DetailsEnfant";
+	}
+	
+	public String updateEnfant(Enfant updatedEnfant){
+		enfServ.updateEnfant(updatedEnfant);
+		return "ListeEnfants";
+	}
+	
+	public String removeEnfant(Integer idPersonne){
+		enfServ.removeEnfant(idPersonne);
+		return "ListeEnfants";
+	}
 
+	public Enfant getEnfant() {
+		return enfant;
+	}
+
+	public void setEnfant(Enfant enfant) {
+		this.enfant = enfant;
+	}
 }

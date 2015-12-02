@@ -1,5 +1,6 @@
 package services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -60,6 +61,26 @@ public class EnfantServicesImpl implements EnfantServices{
 		enf.setTEClasseCla(modif.getTEClasseCla());
 		enf.setDateNaissance(modif.getDateNaissance());
 		em.getTransaction().commit();
+	}
+
+	@Override
+	public void updateEnfant(Enfant enfant) {
+		em.merge(enfant);
+		em.flush();
+	}
+
+	@Override
+	public void removeEnfant(Integer idpersonne) {
+		Enfant enf = findEnfant(idpersonne);
+		em.remove(enf);
+		em.flush();
+	}
+
+	@Override
+	public Enfant findEnfant(Integer idpers) {
+		Enfant enf = em.find(Enfant.class, idpers);
+		em.flush();
+		return enf;
 	}
 
 }

@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Details <small>Enfant</small>
+					</h1>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+			<div class="col-lg-12">
+				<h:form>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel value="Nom" />
+						<p:inputText required="true" value="#{enfantController.enfant.nom}"></p:inputText>
+						
+						<p:outputLabel value="Prenom" />
+						<p:inputText required="true" value="#{enfantController.enfant.prenom}"></p:inputText>
+						
+						<p:outputLabel value="Date de naissance" />
+        				<p:calendar required="true" value="#{enfantController.enfant.dateNaissance}" mode="inline" />
+						
+						<p:outputLabel></p:outputLabel>
+						<p:commandButton value="Enregistrer"
+							action="#{enfantController.updateEnfant(enfantController.enfant)}"></p:commandButton>
+					</h:panelGrid>
+				</h:form>
+			</div>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>

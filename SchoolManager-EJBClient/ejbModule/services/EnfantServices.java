@@ -14,5 +14,8 @@ public interface EnfantServices {
 	public void addEnfant(Enfant enfant);
 	public List<Enfant> getListEnfant();
 	public List<Enfant> getListEnfantClasse(int idClasse);
+	public void updateEnfant(Enfant enfant);
+	public void removeEnfant(Integer idpersonne);
+	public Enfant findEnfant(Integer idpers);
 	
 }

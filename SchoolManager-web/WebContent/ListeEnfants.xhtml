@@ -52,6 +52,18 @@
 							<p:column headerText="Date de naissance">
 								<h:outputText value="#{enfant.dateNaissance}" />
 							</p:column>
+							
+							<p:column headerText="">
+								<h:commandLink id="link"
+									action="#{enfantController.detailsEnfant(enfant.idPersonne)}">
+									<i class="fa fa-fw fa-edit"></i>
+								</h:commandLink>
+								<h:commandLink id="link2"
+									action="#{enfantController.removeEnfant(enfant.idPersonne)}">
+									<i class="fa fa-fw fa-trash"></i>
+								</h:commandLink>
+							</p:column>
+							
 						</p:dataTable>
 					</h:form>
 				</h:body>

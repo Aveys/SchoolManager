@@ -9,9 +9,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Classe;
 import entities.Droit;
 import entities.Ecole;
 import entities.Enseignant;
+import entities.TypeEcole;
 import services.EcoleServices;
 
 
@@ -62,4 +64,12 @@ public class EcoleServicesImpl implements EcoleServices {
 		Query query = em.createQuery("SELECT e FROM Enseignant e");
 		return query.getResultList();
 	}
+
+	@Override
+	public List<TypeEcole> getListTypeEcole(int idEcole) {
+		Query query = em.createQuery("SELECT te From TypeEcole te Where te.idEcole = :id")
+				.setParameter("id", idEcole);
+		return query.getResultList();
+	}
+
 }

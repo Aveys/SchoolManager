@@ -58,10 +58,13 @@
 					    </p:column>
 					    
 					    <p:column headerText="Liste des Classes">
-					    	<!-- TODO : lien vers la liste des classes -->
-					    	<h:link value="liste des classes" outcome="ListeUtilisateurs.xhtml" />
+					    	<p:dataList var="typeEcole" value="#{ecoleController.getListTypeEcole(ecole.idEcole)}">
+					    		<p:column> 
+					    			<h:outputText value="#{typeEcole.libelle}" />
+					    		</p:column>
+					    	</p:dataList>
 					    </p:column>
-					    
+
 					    <p:column headerText="Details">
 					        <h:commandLink id="link" action="#{ecoleController.detailsEcole(ecole.idEcole)}" >
 					        	<i class="fa fa-fw fa-edit"></i> 

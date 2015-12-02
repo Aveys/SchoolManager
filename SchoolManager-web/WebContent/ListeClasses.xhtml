@@ -23,24 +23,35 @@
 			<div class="col-lg-12">
 				<!-- CONTENT HERE !!!! ASK ME FOR DESIGN HELP -->
 				<h:form id="form">
-					<p:dataTable var="classe" value="#{classeController.getListClasses()}" >
-					    <p:column headerText="Numero Classe" sortBy="#{classe.numClasse}">
+					<p:dataTable var="classe" value="#{classeController.getListClasses()}" widgetVar="classeTable"
+						emptyMessage="Aucune classe ne correspond à ces critères" filteredValue="#{classeController.triListClasse}">
+						
+						<f:facet name="header">
+							<p:outputPanel>
+								<h:outputText value="Rechercher:" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('classeTable').filter()" style="width:150px"
+									placeholder="Enter keyword" />
+							</p:outputPanel>
+						</f:facet>
+						
+					    <p:column headerText="Numero Classe" filterBy="#{classe.numClasse}">
 					        <h:outputText value="#{classe.numClasse}" />
-					    </p:column>
-					 
-					    <p:column headerText="Numero Salle" sortBy="#{classe.numClasse}">
+					    </p:column>					 
+					    <p:column headerText="Numero Salle" filterBy="#{classe.numClasse}">
 					        <h:outputText value="#{classe.numSalle}" />
 					    </p:column>
-					    <p:column headerText="Enseignant" sortBy="#{classe.TEEnseignantEn.nom}">
+					    <p:column headerText="Enseignant" filterBy="#{classe.TEEnseignantEn.nom}">
 					        <h:outputText value="#{classe.TEEnseignantEn.nom}" />
 					        <h:outputText value=" #{classe.TEEnseignantEn.prenom}" />
 					    </p:column>
-					    <p:column headerText="Niveau" sortBy="#{classe.TRNiveauNiv.niveau}">
+					    <p:column headerText="Niveau" filterBy="#{classe.TRNiveauNiv.niveau}">
 					        <h:outputText value="#{classe.TRNiveauNiv.niveau}" />
 					    </p:column>
-					    <p:column headerText="Ecole" sortBy="#{classe.TEEcoleEco.nomEtablissement}">
+					    <p:column headerText="Ecole" filterBy="#{classe.TEEcoleEco.nomEtablissement}">
 					        <h:outputText value="#{classe.TEEcoleEco.nomEtablissement}" />
 					    </p:column>
+					    
 					</p:dataTable>
 				</h:form>
 				</div>

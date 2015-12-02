@@ -20,7 +20,7 @@ public class Famille implements Serializable {
 	private int idFamille;
 
 	//bi-directional many-to-one association to Enfant
-	@OneToMany(mappedBy="TEFamilleFam")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "TEFamilleFam", cascade = CascadeType.ALL)
 	private List<Enfant> TEEnfantsEnfs;
 
 	//bi-directional many-to-one association to Tuteur

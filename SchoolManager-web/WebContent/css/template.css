@@ -16,3 +16,6 @@
 #formLogin{
 	margin :20px;
 }
+.ui-column-customfilter{
+	display:inline-flex;
+}

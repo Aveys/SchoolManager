@@ -45,7 +45,7 @@ public class ClasseController {
 	private int idEcole;
 	private int idNiveau;
 	private List<Enfant> listEnfants;
-	
+	private List<Classe> triListClasse;
 	
 	public Classe getClasse() {
 		return classe;
@@ -88,6 +88,7 @@ public class ClasseController {
 
 	public String saveClasse(Classe classe, int idEcole, int idEnseignant, int idNiveau){
 		System.out.println("Enregistrement d'une classe");
+		System.out.println(classe.getIdClasse() + " " + classe.getNumClasse() + " " + classe.getNumSalle() + " " + idEcole);
 		service.addClasse(classe, idEcole, idEnseignant, idNiveau);
 		
 		return "ListeClasses";
@@ -112,7 +113,6 @@ public class ClasseController {
 	
 	public String removeClasse(int idClasse){
 		String ret  = "ListeClasse";
-		System.out.println("_____ ClasseController _______ Nb Enfants dans liste" + enfantService.getListEnfantClasse(idClasse).size() );
 		if (enfantService.getListEnfantClasse(idClasse).size() == 0 ) {
 			service.removeClasse(idClasse);
 			return "ListeClasse";
@@ -141,4 +141,18 @@ public class ClasseController {
 		ret = listEnfantsClasse(idClasse).size();
 		return ret;
 	}
+
+
+	public List<Classe> getTriListClasse() {
+		return triListClasse;
+	}
+
+
+	public void setTriListClasse(List<Classe> triListClasse) {
+		this.triListClasse = triListClasse;
+	}
+
+
+
+	
 }

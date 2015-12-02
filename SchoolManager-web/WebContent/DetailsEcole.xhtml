@@ -17,7 +17,6 @@
 			<!-- /.row -->
 
 			<div class="row">
-			<div class="col-lg-12">
 				<h:form>
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:outputLabel value="Nom" />
@@ -31,16 +30,14 @@
 						<p:outputLabel value="Surface" />
 						<p:inputText required="true" value="#{ecoleController.ecole.surface}"></p:inputText>
 						<p:outputLabel value="Enseignant" />
-						<p:inputText required="true" value="#{ecoleController.ecole.TEEnseignantEn.nom}"></p:inputText>
+						<p:selectOneMenu required="true" id="enseignant" value="#{ecoleController.idEnseignant}">
+				            <f:selectItems value="#{ecoleController.getListEnseignants()}" var="_enseignant" itemValue="#{_enseignant.idEnseignant}" itemLabel="#{_enseignant.nom}"/>
+				        </p:selectOneMenu>
 						<p:outputLabel></p:outputLabel>
 						<p:commandButton value="Enregistrer"
-							action="#{ecoleController.updateEcole(ecoleController.ecole)}"></p:commandButton>
+							action="#{ecoleController.updateEcole(ecoleController.ecole,ecoleController.idEnseignant)}" ajax="false"></p:commandButton>
 					</h:panelGrid>
 				</h:form>
-
-
-</div>
-
 			</div>
 
 		</div>

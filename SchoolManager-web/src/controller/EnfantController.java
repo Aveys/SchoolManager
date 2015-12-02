@@ -49,12 +49,7 @@ public class EnfantController {
 	}
 
 	public void setFilteredEnfants(List<Enfant> filteredEnfants) {
-		List<Integer> lnc = new ArrayList<Integer>();
-		List<Classe> classes = getClasses();
-		for (Classe cla: classes) {
-			lnc.add(cla.getNumClasse());
-		}
-		setNumClasses(lnc);
+		
 		this.filteredEnfants = filteredEnfants;
 	}
 
@@ -63,7 +58,7 @@ public class EnfantController {
 	}
 	
 	public List<Integer> getNumClasses() {
-		return this.numClasses;
+		return claServ.getNumListClasses();
 	}
 	
 	public String detailsEnfant(Integer idPersonne){

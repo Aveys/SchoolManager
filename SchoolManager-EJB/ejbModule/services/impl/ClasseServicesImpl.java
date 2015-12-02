@@ -1,5 +1,6 @@
 package services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -82,6 +83,17 @@ public class ClasseServicesImpl implements ClasseServices{
 	public void removeClasse(int idClasse) {
 		Classe classe = findClasse(idClasse);
 		em.remove(classe);
+	}
+
+
+	@Override
+	public List<Integer> getNumListClasses() {
+		List<Classe> lc = getListClasses();
+		List<Integer> lnc = new ArrayList<Integer>();
+		for (Classe cla: lc) {
+			lnc.add(cla.getNumClasse());
+		}
+		return lnc;
 	}
 
 }

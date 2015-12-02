@@ -21,14 +21,21 @@
 						<p:outputLabel value="Adresse" />
 						<p:inputText required="true" value="#{ecoleController.ecole.adresse}"></p:inputText>
 						<p:outputLabel value="Email" />
-						<p:inputText required="true" value="#{ecoleController.ecole.mail}"></p:inputText>
+						<p:inputText required="true" 
+							value="#{ecoleController.ecole.email}"></p:inputText>
 						<p:outputLabel value="Responsable" />
-						<p:selectOneMenu required="true" id="droit" value="#{ecoleController.ecole.TEEnseignantEn}">
-				            <f:selectItems value="#{ecoleController.listEnseignants()}" var="_enseignant" itemValue="#{_enseignant.iidEnseignant}" itemLabel="#{_enseignant.nom}"/>
+						<p:selectOneMenu 
+							required="true" 
+							id="enseignant" 
+							value="#{ecoleController.idEnseignant}">
+				            	<f:selectItems value="#{ecoleController.getListEnseignants()}" 
+					            	var="_enseignant" 
+					            	itemValue="#{_enseignant.idEnseignant}" 
+					            	itemLabel="#{_enseignant.nom}  #{_enseignant.prenom}"/>
 				        </p:selectOneMenu>
 						<p:outputLabel></p:outputLabel>
 						<p:commandButton value="Enregistrer"
-							action="#{ecoleController.saveEcole(ecoleController.ecole)}"></p:commandButton>
+							action="#{ecoleController.saveEcole(ecoleController.ecole, ecoleController.idEnseignant)}"></p:commandButton>
 					</h:panelGrid>
 				</h:form>
 

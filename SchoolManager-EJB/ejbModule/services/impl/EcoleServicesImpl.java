@@ -9,9 +9,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Classe;
 import entities.Droit;
 import entities.Ecole;
 import entities.Enseignant;
+import entities.TypeEcole;
 import services.EcoleServices;
 
 
@@ -39,7 +41,9 @@ public class EcoleServicesImpl implements EcoleServices {
 	}
 
 	@Override
-	public void addEcole(Ecole ecole) {
+	public void addEcole(Ecole ecole, int idEnseignant) {
+		Enseignant enseignant = em.getReference(Enseignant.class, idEnseignant);
+		ecole.setTEEnseignantEn(enseignant);
 		em.persist(ecole);
 	}
 
@@ -62,4 +66,33 @@ public class EcoleServicesImpl implements EcoleServices {
 		Query query = em.createQuery("SELECT e FROM Enseignant e");
 		return query.getResultList();
 	}
+
+	@Override
+	public List<TypeEcole> getListTypeEcole(int idEcole) {
+		Query query = em.createQuery("SELECT te From TypeEcole te JOIN te.TEEcoleEcos e Where e.idEcole = :id")
+				.setParameter("id", idEcole);
+		//System.out.println(query.getResultList());
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Classe> getListClasses(int idEcole){
+		Query query = em.createQuery("SELECT c From Classe c JOIN FETCH c.TEEcoleEco e Where e.idEcole = :id")
+				.setParameter("id", idEcole);
+		//System.out.println(query.getResultList());
+		return query.getResultList();
+	}
+
+	@Override
+	public void deleteEcole(int idEcole) {
+		Query query = em.createQuery("DELETE FROM Ecole e WHERE e.idEcole = :id")
+				.setParameter("id", idEcole);
+		try{
+			int rowCount = query.executeUpdate();
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+	}
+	
 }

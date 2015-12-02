@@ -35,9 +35,7 @@ public class UserServicesImpl implements UserServices{
 					.setMaxResults(1)
 					.getSingleResult();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("ERROR BALNAVE");
 		}
 		
 

@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Liste des Familles
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="AjouterFamille.xhtml" role="button" class="btn btn-default"><i class="fa fa-plus-circle"></i> Ajouter une Famille</a>
+						</li>
+					</ol>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+			<div class="col-lg-12">
+				<!-- CONTENT HERE !!!! ASK ME FOR DESIGN HELP -->
+				<h:form id="form">
+					<p:dataTable var="famille" value="#{familleController.getListFamilles()}" widgetVar="familleTable"
+						emptyMessage="Aucune famille ne correspond à ces critères" filteredValue="#{familleController.triListFamille}">
+						
+						<f:facet name="header">
+							<p:outputPanel>
+								<h:outputText value="Rechercher:" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('familleTable').filter()" style="width:150px"
+									placeholder="Enter keyword" />
+							</p:outputPanel>
+						</f:facet>
+						
+					    <p:column headerText="Parent 1" filterBy="#{famille.TETuteurTut2}">
+					        <h:outputText value="#{famille.TETuteurTut2.nom}" />
+					        <h:outputText value="#{famille.TETuteurTut2.prenom}" />
+					    </p:column>					 
+					    <p:column headerText="Parent 2" filterBy="#{famille.TETuteurTut3}">
+					        <h:outputText value="#{famille.TETuteurTut3.nom}" />
+					        <h:outputText value="#{famille.TETuteurTut3.prenom}" />
+					    </p:column>
+					    <p:column headerText="Tuteur" filterBy="#{famille.TETuteurTut1}">
+					        <h:outputText value="#{famille.TETuteurTut1.nom}" />
+					        <h:outputText value=" #{famille.TETuteurTut1.prenom}" />
+					    </p:column>
+					    <p:column headerText="Adresse Famille" filterBy="#{famille.TETuteurTut1.TEAdresseAdr}">
+					        <h:outputText value="#{famille.TETuteurTut1.TEAdresseAdr}"/>
+					    </p:column>
+					    <p:column headerText="Enfants" filterBy="#{familleController.getListeEnfants(famille.idFamille)}">
+					        <h:outputText value="#{familleController.getListeEnfants(famille.idFamille)}" />
+					    </p:column>
+					    
+					</p:dataTable>
+				</h:form>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>

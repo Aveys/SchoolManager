@@ -12,7 +12,6 @@
   <filter-name>LoginFilter</filter-name>
   <filter-class>filter.LoginFilter</filter-class>
  </filter>
- <!-- Set the login filter to secure all the pages in the /* path of the application  -->
  <filter-mapping>
   <filter-name>LoginFilter</filter-name>
   <url-pattern>/*</url-pattern>
@@ -34,3 +33,4 @@
   <welcome-file>home.xhtml</welcome-file>
  </welcome-file-list>
 </web-app>
+

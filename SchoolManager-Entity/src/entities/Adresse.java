@@ -133,4 +133,10 @@ public class Adresse implements Serializable {
 		return TETuteurTut;
 	}
 
+	@Override
+	public String toString() {
+		return adresse1 + "" + adresse2 + "" + cp + "" + ville ;
+	}
+
+
 }

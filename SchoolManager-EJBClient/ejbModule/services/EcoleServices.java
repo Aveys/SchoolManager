@@ -12,7 +12,7 @@ import entities.TypeEcole;
 public interface EcoleServices {
 
 	public Ecole getEcole(int idEcole);
-	public void addEcole(Ecole ecole);
+	public void addEcole(Ecole ecole, int idEnseignant);
 	public List<Ecole> getEcoles();
 	public void updateEcole(Ecole ecole, int idEnseignant);
 	public List<Enseignant> getListEnseignants();

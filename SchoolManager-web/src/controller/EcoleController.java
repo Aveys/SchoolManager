@@ -67,8 +67,20 @@ public class EcoleController {
 		return service.getListClasses(idEcole);
 	}
 	
-	public void deleteEcole(int idEcole){
-		service.deleteEcole(idEcole);
+	public String deleteEcole(int idEcole){
+		try{
+			service.deleteEcole(idEcole);
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "ListeEcoles";
+	}
+	
+	public String saveEcole(Ecole ecole, int idEnseignant){
+		service.addEcole(ecole, idEnseignant);
+		return "ListeEcoles";
+		
 	}
 	
 }

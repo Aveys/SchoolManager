@@ -27,13 +27,17 @@
 						<p:inputText required="true" value="#{ecoleController.ecole.email}"></p:inputText>
 						<p:outputLabel value="Telephone" />
 						<p:inputText required="true" value="#{ecoleController.ecole.num_Telephone}"></p:inputText>
+						<p:outputLabel value="Fax" />
+						<p:inputText required="true" value="#{ecoleController.ecole.fax}"></p:inputText>
 						<p:outputLabel value="Surface" />
 						<p:inputText required="true" value="#{ecoleController.ecole.surface}"></p:inputText>
-						<p:outputLabel value="Enseignant" />
+						<p:outputLabel value="Nombre de salles" />
+						<p:inputText required="true" value="#{ecoleController.ecole.nombreSalles}"></p:inputText>
+						<p:outputLabel value="Responsable" />
 						<p:selectOneMenu required="true" id="enseignant" value="#{ecoleController.idEnseignant}">
 				            <f:selectItems value="#{ecoleController.getListEnseignants()}" var="_enseignant" itemValue="#{_enseignant.idEnseignant}" itemLabel="#{_enseignant.nom}"/>
 				        </p:selectOneMenu>
-						<p:outputLabel></p:outputLabel>
+				        <p:outputLabel></p:outputLabel>
 						<p:commandButton value="Enregistrer"
 							action="#{ecoleController.updateEcole(ecoleController.ecole,ecoleController.idEnseignant)}" ajax="false"></p:commandButton>
 					</h:panelGrid>

@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Details <small>Classe</small>
+					</h1>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+				<h:form>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel value="Ecole" />
+						<p:selectOneMenu required="true" id="ecole"
+							value="#{classeController.idEcole}">
+							<f:selectItems value="#{ecoleController.getEcoles()}"
+								var="_ecoles" itemValue="#{_ecoles.idEcole}"
+								itemLabel="#{_ecoles.nomEtablissement}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Niveau" />
+						<p:selectOneMenu required="true" id="niveau"
+							value="#{classeController.idNiveau}">
+							<f:selectItems value="#{niveauController.getListNiveaux()}"
+								var="_niveaux" itemValue="#{_niveaux.idNiveau}"
+								itemLabel="#{_niveaux.niveau}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Enseignant" />
+						<p:selectOneMenu required="true" id="enseignant"
+							value="#{classeController.idEnseignant}">
+							<f:selectItems
+								value="#{enseignantController.getListEnseignants()}"
+								var="_enseignant" itemValue="#{_enseignant.idEnseignant}"
+								itemLabel="#{_enseignant.nom} #{_enseignant.prenom}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Numero de classe " />
+						<p:spinner id="classe"
+							value="#{classeController.classe.numClasse}" min="0" max="100" />
+
+						<p:outputLabel value="Numero de salle" />
+						<p:spinner id="salle" value="#{classeController.classe.numSalle}"
+							min="0" max="100" />
+
+						<p:outputLabel></p:outputLabel>
+						<p:commandButton value="Enregistrer"
+							action="#{classeController.updateClasse(classeController.classe, classeController.idEcole, classeController.idEnseignant, classeController.idNiveau)}"
+							ajax="false"></p:commandButton>
+					</h:panelGrid>
+
+
+				</h:form>
+
+				<h2>Liste des enfants de la classe</h2>
+				<p:dataTable var="enfant" value="#{classeController.listEnfantsClasse(classeController.classe.idClasse)}">
+					<p:column headerText="Nom">
+						<h:outputText value="#{enfant.nom}" />
+					</p:column>
+
+					<p:column headerText="Prenom">
+						<h:outputText value="#{enfant.prenom}" />
+					</p:column>
+
+					<p:column headerText="Date de naissance">
+						<h:outputText value="#{enfant.dateNaissance}" />
+					</p:column>
+				</p:dataTable>
+
+
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>

@@ -102,7 +102,7 @@
                     <li>
                         <a href="bootstrap-grid.html"><i class="icon-sidebar fa fa-fw fa-upload"></i> Export</a>
                     </li>
-                    <c:if test="#{not empty sessionScope.loggedUser}">
+                    <c:if test="#{not empty sessionScope.loggedUser and sessionScope.loggedUser.TRDroitsDro.libelle=='Admin'}">
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Administration <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">

@@ -88,9 +88,10 @@ input[type="password"] {
 					<h3 class="form-signin-heading">Veuillez vous connecter</h3>
 					<hr class="colorgraph"/>
 					<br/> 
-					<h:inputText name="mail" styleClass="form-control" value="#{userController.loginSubmission.mail}" id="mail" type="email" a:placeholder="mail" required="true"/>
-					<h:inputSecret name="password" styleClass="form-control" value="#{userController.loginSubmission.motDePasse}" id="password" type="password" a:placeholder="password" required="true"/>
-					<h:commandButton  id="btnLogin" styleClass="btn btn-default" value="Se connecter!" actionListener="#{userController.checkUser(userController.loginSubmission)}"/>
+					<h:inputText name="mail" styleClass="form-control" value="#{userController.loginSubmission.mail}" id="email" type="email" a:placeholder="email" required="true"/>
+					<h:inputSecret name="password" styleClass="form-control" value="#{userController.loginSubmission.motDePasse}" id="password" type="password" a:placeholder="mot de passe" required="true"/>
+					<h:commandButton  id="btnLogin" styleClass="btn btn-default" value="Se connecter" actionListener="#{userController.checkUser(userController.loginSubmission)}"/>
+                          
 				</h:form>
 			</div>
 		</div>

@@ -30,7 +30,6 @@ public class LoginFilter implements Filter {
      * Checks if user is logged in. If not it redirects to the login.xhtml page.
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-    	System.out.println("contxt : "+((HttpServletRequest)request).getRequestURI());
     	if(((HttpServletRequest)request).getRequestURI().contains("loginPage.xhtml")){
     		chain.doFilter(request, response);
     	}else{

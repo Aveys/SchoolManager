@@ -27,7 +27,8 @@
 						value="#{ecoleController.getEcoles()}"
 						widgetVar="ecoleTable"
 						emptyMessage="Aucune école ne correspond à ces critères" 
-						filteredValue="#{ecoleController.triListEcole}">
+						filteredValue="#{ecoleController.triListEcole}"
+						styleClass="text-center">
 						
 						<f:facet name="header">
 							<p:outputPanel>
@@ -35,6 +36,11 @@
 								<p:inputText id="globalFilter"
 									onkeyup="PF('ecoleTable').filter()" style="width:150px"
 									placeholder="Recherche" />
+									
+								<h:commandLink>
+									<i class="fa fa-file-excel-o"></i>
+									<p:dataExporter type="xls" target="tbl" fileName="Ecoles" />
+								</h:commandLink>
 							</p:outputPanel>
 						</f:facet>
 						
@@ -71,14 +77,14 @@
 					        <h:outputText value="#{ecole.nombreSalles}" />
 					    </p:column>
 					    
-					    <p:column headerText="Type d'école">
-					    	<p:dataList var="typeEcole" value="#{ecoleController.getListTypeEcole(ecole.idEcole)}">
+					    <p:column headerText="Type d'école" styleClass="list-unstyled" >
+					    	<p:dataList var="typeEcole" value="#{ecoleController.getListTypeEcole(ecole.idEcole)}" styleClass="list-unstyled" itemStyleClass="list-unstyled small" >
 								#{typeEcole.libelle}
 					    	</p:dataList>
 					    </p:column>
 					    
-					    <p:column headerText="Liste des classes">
-					    	<p:dataList var="classe" value="#{ecoleController.getListClasses(ecole.idEcole)}">
+					    <p:column headerText="Liste des classes" styleClass="list-unstyled" >
+					    	<p:dataList var="classe" value="#{ecoleController.getListClasses(ecole.idEcole)}" styleClass="list-unstyled" itemStyleClass="list-unstyled small">
 								#{classe.TRNiveauNiv.niveau} 
 					    	</p:dataList>
 					    </p:column>

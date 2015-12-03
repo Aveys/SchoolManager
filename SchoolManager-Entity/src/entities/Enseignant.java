@@ -17,6 +17,7 @@ public class Enseignant implements Serializable {
 
 	@Id
 	@Column(name="id_enseignant")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idEnseignant;
 
 	private String email;

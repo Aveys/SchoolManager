@@ -33,10 +33,7 @@ public class EnfantServicesImpl implements EnfantServices{
 		return enfant;
 	}
 
-	@Override
-	public void addEnfant(Enfant enfant) {
-		em.persist(enfant);
-	}
+
 
 	@Override
 	public List<Enfant> getListEnfant() {
@@ -81,6 +78,12 @@ public class EnfantServicesImpl implements EnfantServices{
 		Enfant enf = em.find(Enfant.class, idpers);
 		em.flush();
 		return enf;
+	}
+	
+	@Override
+	public void addEnfant(Enfant enfant) {
+		em.persist(enfant);
+		em.flush();
 	}
 
 }

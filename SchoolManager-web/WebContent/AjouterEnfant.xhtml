@@ -2,7 +2,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml">
+	xmlns:f="http://java.sun.com/jsf/core" template="template.xhtml"
+    >
+    
+    <!-- <script type="text/javascript">
+        function dropdownSelect() {            
+            var element=document.getElementById("form:dropdown");
+            var text=element.options[element.selectedIndex].itemLabel;
+            document.getElementById("form:nom").value = text; 
+        }
+    </script>  -->
+    
 	<ui:define name="content">
 		<div class="container-fluid">
 			<!-- Page Heading -->
@@ -18,24 +28,40 @@
 				<h:form>
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:outputLabel value="Famille" />
-       					<f:facet name="filter">
-							<p:selectOneMenu">
-								<f:selectItem itemLabel="" itemValue="#{null}"
-									noSelectionOption="true" />
-								<f:selectItems value="#{enfantController.getNomFamilles()}" />
-							</p:selectOneMenu>
-						</f:facet>
+						<p:selectOneMenu id="dropdown" value="#{enfantController.idFamille}" >
+							<f:selectItem itemLabel="" itemValue="#{null}"
+								noSelectionOption="false" />
+							<f:selectItems value="#{enfantController.getFamilles()}" var="_fam" itemLabel="#{_fam.TETuteurTut1.nom}" itemValue="#{_fam.idFamille}"/>
+						</p:selectOneMenu>
+ 
+ 
+ 						<p:outputLabel value="Nom" />
+						<p:inputText id="nom" value="#{enfantController.enfant.nom}"></p:inputText>
  
 						
-						<p:outputLabel value="Prenom" />
+						<p:outputLabel value="Prenom" /> 
 						<p:inputText required="true" value="#{enfantController.enfant.prenom}"></p:inputText>
 						
 						<p:outputLabel value="Date de naissance" />
         				<p:calendar required="true" value="#{enfantController.enfant.dateNaissance}" mode="inline" />
+        				
+        				<p:outputLabel value="Classe" />
+						<p:selectOneMenu value="#{enfantController.idClasse}">
+							<f:selectItems value="#{enfantController.getClasses()}" var="_classe" itemLabel="#{_classe.numClasse}" itemValue="#{_classe.idClasse}" />
+						</p:selectOneMenu>
 						
-						<p:outputLabel></p:outputLabel>
+						
+        				<!-- Sexe statique -->
+        				<p:outputLabel value="Sexe" />
+						<p:selectOneMenu value="#{enfantController.idSexe}">
+				            <f:selectItem itemLabel="Masculin" itemValue="1" />
+				            <f:selectItem itemLabel="Féminin" itemValue="2" />
+				            <f:selectItem itemLabel="Indéfini" itemValue="3" />
+						</p:selectOneMenu>
+        				
+						
 						<p:commandButton value="Enregistrer"
-							action="#{enfantController.updateEnfant(enfantController.enfant)}"></p:commandButton>
+							action="#{enfantController.ajouterEnfant(enfantController.enfant, enfantController.idFamille, enfantController.idClasse, enfantController.idSexe)}" ajax="false"></p:commandButton>
 					</h:panelGrid>
 				</h:form>
 </div>

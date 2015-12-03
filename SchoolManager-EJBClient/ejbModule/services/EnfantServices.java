@@ -11,11 +11,11 @@ import entities.Enfant;
 public interface EnfantServices {
 
 	public Enfant getEnfant(String nom, String prenom);
-	public void addEnfant(Enfant enfant);
 	public List<Enfant> getListEnfant();
 	public List<Enfant> getListEnfantClasse(int idClasse);
 	public void updateEnfant(Enfant enfant);
 	public void removeEnfant(Integer idpersonne);
 	public Enfant findEnfant(Integer idpers);
+	public void addEnfant(Enfant enfant);
 	
 }

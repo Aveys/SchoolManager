@@ -7,12 +7,19 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 
 import entities.Classe;
 import entities.Enfant;
+import entities.Famille;
+import entities.Sexe;
+import entities.Tuteur;
 import entities.User;
 import services.impl.ClasseServicesImpl;
 import services.impl.EnfantServicesImpl;
+import services.impl.FamilleServicesImpl;
+import services.impl.SexeServicesImpl;
+import services.impl.TuteurServicesImpl;
 
 @ManagedBean
 @SessionScoped
@@ -25,8 +32,24 @@ public class EnfantController {
 	@EJB
 	private ClasseServicesImpl claServ;
 	
+	@EJB
+	private FamilleServicesImpl famServ;
+	
+	@EJB
+	private TuteurServicesImpl tutServ;
+	
+	@EJB
+	private SexeServicesImpl sexServ;
+	
+	
 	private List<Enfant> filteredEnfants;
 	private Enfant enfant = new Enfant();
+	
+	
+	//attribut pour enfant
+	private Integer idSexe, idFamille, idClasse;
+	
+	
 	
 	public List<Enfant> listEnfants() {
 		return enfServ.getListEnfant();
@@ -57,10 +80,33 @@ public class EnfantController {
 		return claServ.getNumListClasses();
 	}
 	
+	public List<Integer> getIdClasses() {
+		return claServ.getIdListClasses();
+	}
+	
 	public String detailsEnfant(Integer idPersonne){
 		this.setEnfant(enfServ.findEnfant(idPersonne));
 		return "DetailsEnfant";
 	}
+	
+	
+	public String ajouterEnfant(Enfant enfant, Integer idFamille, Integer idClasse, Integer idSexe) {
+		System.out.println(idFamille);
+		Famille fam = famServ.getFamille(idFamille);
+		enfant.setTEFamilleFam(fam);
+		Classe cla = claServ.getClasse(idClasse);
+		enfant.setTEClasseCla(cla);
+		Sexe sex = sexServ.getSexe(idSexe);
+		enfant.setTRSexeSex(sex);
+		
+		fam.addTEEnfantsEnf(enfant);
+		famServ.updateFamille(fam);
+		
+		enfServ.addEnfant(enfant);
+		return "ListeEnfants";
+	}
+	
+
 	
 	public String updateEnfant(Enfant updatedEnfant){
 		enfServ.updateEnfant(updatedEnfant);
@@ -79,4 +125,48 @@ public class EnfantController {
 	public void setEnfant(Enfant enfant) {
 		this.enfant = enfant;
 	}
+	
+	//renvoie les tuteurs
+	public List<String> getNomFamilles() {
+		List<Famille> listFam = famServ.getListFamilles();
+		//return famServ.getNomFamilles();
+		List<String> listNom = new ArrayList<String>();
+		
+		for (Famille fam : listFam) {
+			listNom.add(fam.getTETuteurTut1().getNom());
+		}
+		
+		
+		return listNom;
+	}
+	
+	public List<Famille> getFamilles() {
+		return famServ.getListFamilles();
+	}
+
+	public Integer getIdSexe() {
+		return idSexe;
+	}
+
+	public void setIdSexe(Integer idSexe) {
+		this.idSexe = idSexe;
+	}
+
+	public Integer getIdFamille() {
+		return idFamille;
+	}
+
+	public void setIdFamille(Integer idFamille) {
+		this.idFamille = idFamille;
+	}
+
+	public Integer getIdClasse() {
+		return idClasse;
+	}
+
+	public void setIdClasse(Integer idClasse) {
+		this.idClasse = idClasse;
+	}
+
+	
 }

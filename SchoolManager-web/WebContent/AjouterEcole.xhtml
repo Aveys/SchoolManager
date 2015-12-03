@@ -23,7 +23,25 @@
 						<p:outputLabel value="Email" />
 						<p:inputText required="true" 
 							value="#{ecoleController.ecole.email}"></p:inputText>
+					 	<p:outputLabel value="Téléphone" />
+				        <p:inputText required="true" value="#{ecole.num_Telephone}" />
+					    <p:outputLabel value="Fax" />
+				        <p:inputText required="true" value="#{ecole.fax}" />
+				        <p:outputLabel value="Surface" />
+				        <p:inputText required="true" value="#{ecole.surface}" />
+					    <p:outputLabel value="Nombre de Salles" />
+				        <p:inputText required="true" value="#{ecole.nombreSalles}" />
 						<p:outputLabel value="Responsable" />
+						<p:selectOneMenu 
+							required="true" 
+							id="enseignant" 
+							value="#{ecoleController.idEnseignant}">
+				            	<f:selectItems value="#{ecoleController.getListEnseignants()}" 
+					            	var="_enseignant" 
+					            	itemValue="#{_enseignant.idEnseignant}" 
+					            	itemLabel="#{_enseignant.nom}  #{_enseignant.prenom}"/>
+				        </p:selectOneMenu>
+				        <p:outputLabel value="typeEcole" />
 						<p:selectOneMenu 
 							required="true" 
 							id="enseignant" 

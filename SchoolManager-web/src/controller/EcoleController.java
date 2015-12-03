@@ -20,7 +20,10 @@ public class EcoleController {
 	
 	private Ecole ecole = new Ecole();
 	private int idEnseignant;
-	 
+	private List<Ecole> triListEcole; 
+	
+
+
 	@EJB
 	private EcoleServices service;
  
@@ -81,6 +84,14 @@ public class EcoleController {
 		service.addEcole(ecole, idEnseignant);
 		return "ListeEcoles";
 		
+	}
+	
+	public List<Ecole> getTriListEcole() {
+		return triListEcole;
+	}
+
+	public void setTriListEcole(List<Ecole> triListEcole) {
+		this.triListEcole = triListEcole;
 	}
 	
 }

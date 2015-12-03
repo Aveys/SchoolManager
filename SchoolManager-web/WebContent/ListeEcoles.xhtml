@@ -22,38 +22,52 @@
 			<div class="row">
 			<div class="col-lg-12">
 				<!-- CONTENT HERE !!!! ASK ME FOR DESIGN HELP -->
-				<h:form>
-					<p:dataTable var="ecole" value="#{ecoleController.getEcoles()}">
-					    <p:column headerText="Nom">
+				<h:form id="form">
+					<p:dataTable var="ecole" 
+						value="#{ecoleController.getEcoles()}"
+						widgetVar="ecoleTable"
+						emptyMessage="Aucune école ne correspond à ces critères" 
+						filteredValue="#{ecoleController.triListEcole}">
+						
+						<f:facet name="header">
+							<p:outputPanel>
+								<h:outputText value="Rechercher:" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('ecoleTable').filter()" style="width:150px"
+									placeholder="Recherche" />
+							</p:outputPanel>
+						</f:facet>
+						
+					    <p:column headerText="Nom" filterBy="#{ecole.nomEtablissement}" >
 					        <h:outputText value="#{ecole.nomEtablissement}" />
 					    </p:column>
 					 
-					    <p:column headerText="Adresse">
+					    <p:column headerText="Adresse" filterBy="#{ecole.adresse}">
 					        <h:outputText value="#{ecole.adresse}" />
 					    </p:column>
 					    
-					    <p:column headerText="Responsable">
+					    <p:column headerText="Responsable" filterBy="#{ecole.TEEnseignantEn.prenom}" >
 					    	<h:outputText value="#{ecole.TEEnseignantEn.prenom} " />
 					        <h:outputText value="#{ecole.TEEnseignantEn.nom}" />
 					    </p:column>
 					    
-					    <p:column headerText="Email">
+					    <p:column headerText="Email" filterBy="#{ecole.email}">
 					        <h:outputText value="#{ecole.email}" />
 					    </p:column>
 					    
-					    <p:column headerText="Téléphone">
+					    <p:column headerText="Téléphone" filterBy="#{ecole.num_Telephone}">
 					        <h:outputText value="#{ecole.num_Telephone}" />
 					    </p:column>
 					    
-					    <p:column headerText="Fax">
+					    <p:column headerText="Fax" filterBy="#{ecole.fax}">
 					        <h:outputText value="#{ecole.fax}" />
 					    </p:column>
 					    
-					    <p:column headerText="Surface">
+					    <p:column headerText="Surface" filterBy="#{ecole.surface}">
 					        <h:outputText value="#{ecole.surface}" />
 					    </p:column>
 					    
-					    <p:column headerText="Nombre de Salles">
+					    <p:column headerText="Nombre de Salles" filterBy="#{ecole.nombreSalles}">
 					        <h:outputText value="#{ecole.nombreSalles}" />
 					    </p:column>
 					    
@@ -70,9 +84,6 @@
 					    </p:column>
 
 					    <p:column headerText="Details">
-					        <h:commandLink id="displayLink" action="#{ecoleController.detailsEcole(ecole.idEcole)}" >
-					        	<i class="fa fa-fw fa-binoculars"></i> 
-					        </h:commandLink>
 					        <h:commandLink id="editLink" action="#{ecoleController.detailsEcole(ecole.idEcole)}" >
 					        	<i class="fa fa-fw fa-edit"></i> 
 					        </h:commandLink>

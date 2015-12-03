@@ -16,6 +16,6 @@ public interface EnfantServices {
 	public void updateEnfant(Enfant enfant);
 	public void removeEnfant(Integer idpersonne);
 	public Enfant findEnfant(Integer idpers);
-	public void addEnfant(Enfant enfant);
+	public void addEnfant(Enfant enfant, Integer idFamille, Integer idClasse, Integer idSexe);
 	
 }

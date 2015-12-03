@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import entities.Classe;
+import entities.Ecole;
 import entities.Enfant;
 import entities.Famille;
 import entities.Sexe;
@@ -91,18 +92,8 @@ public class EnfantController {
 	
 	
 	public String ajouterEnfant(Enfant enfant, Integer idFamille, Integer idClasse, Integer idSexe) {
-		System.out.println(idFamille);
-		Famille fam = famServ.getFamille(idFamille);
-		enfant.setTEFamilleFam(fam);
-		Classe cla = claServ.getClasse(idClasse);
-		enfant.setTEClasseCla(cla);
-		Sexe sex = sexServ.getSexe(idSexe);
-		enfant.setTRSexeSex(sex);
 		
-		fam.addTEEnfantsEnf(enfant);
-		famServ.updateFamille(fam);
-		
-		enfServ.addEnfant(enfant);
+		enfServ.addEnfant(enfant, idFamille, idClasse, idSexe);
 		return "ListeEnfants";
 	}
 	

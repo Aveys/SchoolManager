@@ -13,4 +13,5 @@ public interface SexeServices {
 	
 	public Sexe getSexe(int idSexe);
 	public List<Sexe> getListSexe();
+	public Sexe findSexe(int idSexe);
 }

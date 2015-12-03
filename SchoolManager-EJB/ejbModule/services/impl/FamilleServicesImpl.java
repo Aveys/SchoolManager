@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Enfant;
 import entities.Famille;
 import entities.Niveau;
 import entities.Tuteur;
@@ -22,8 +23,8 @@ public class FamilleServicesImpl implements FamilleServices{
 	private EntityManager em;
 	
 	@Override
-	public Famille getFamille(int id) {
-		Famille famille = (Famille)em.createQuery("SELECT u From Famille u Where u.id LIKE :id")
+	public Famille getFamille(Integer id) {
+		Famille famille = (Famille) em.createQuery("SELECT u From Famille u Where u.idFamille = :id")
 				.setParameter("id", id);
 		
 		if(famille == null)System.out.println("!! Aucune famille trouvé !!");
@@ -44,7 +45,17 @@ public class FamilleServicesImpl implements FamilleServices{
 	}
 
 	
-
+	
+	@Override
+	public void updateFamille(Famille fam) {
+		
+		em.merge(fam);
+		em.flush();
+		
+	}
+	
+	
+	
 	@Override
 	public List<Famille> getListFamilles() {
 		Query query = em.createQuery("SELECT u FROM Famille u");
@@ -73,4 +84,7 @@ public class FamilleServicesImpl implements FamilleServices{
 	
 		em.persist(famille);
 	}
+	
+
+	
 }

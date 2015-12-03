@@ -25,8 +25,8 @@ public class ClasseServicesImpl implements ClasseServices{
 	private EntityManager em;
 	
 	@Override
-	public Classe getClasse(int id) {
-		Classe classe = (Classe)em.createQuery("SELECT u From Classe u Where u.id LIKE :id")
+	public Classe getClasse(Integer id) {
+		Classe classe = (Classe) em.createQuery("SELECT u From Classe u Where u.idClasse LIKE :id")
 				.setParameter("id", id);
 		
 		if(classe == null)System.out.println("!! Aucune classe trouvé !!");
@@ -95,5 +95,20 @@ public class ClasseServicesImpl implements ClasseServices{
 		}
 		return lnc;
 	}
+	
+	
+	
+	
+	@Override
+	public List<Integer> getIdListClasses() {
+		List<Classe> lc = getListClasses();
+		List<Integer> lnc = new ArrayList<Integer>();
+		for (Classe cla: lc) {
+			lnc.add(cla.getIdClasse());
+		}
+		return lnc;
+	}
+	
+	
 
 }

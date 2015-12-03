@@ -9,7 +9,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Classe;
 import entities.Enfant;
+import entities.Famille;
+import entities.Sexe;
 import entities.User;
 import services.EnfantServices;
 
@@ -81,7 +84,13 @@ public class EnfantServicesImpl implements EnfantServices{
 	}
 	
 	@Override
-	public void addEnfant(Enfant enfant) {
+	public void addEnfant(Enfant enfant, Integer idFamille, Integer idClasse, Integer idSexe) {
+		Famille fam= em.getReference(Famille.class, idFamille);
+		Classe cla = em.getReference(Classe.class, idClasse);
+		Sexe sex = em.getReference(Sexe.class, idSexe);
+		enfant.setTEFamilleFam(fam);
+		enfant.setTEClasseCla(cla);
+		enfant.setTRSexeSex(sex);
 		em.persist(enfant);
 		em.flush();
 	}

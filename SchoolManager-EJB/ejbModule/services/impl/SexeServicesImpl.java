@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Sexe;
 import entities.Niveau;
 import entities.Sexe;
 import services.NiveauServices;
@@ -35,6 +36,14 @@ public class SexeServicesImpl implements SexeServices{
 		Query query = em.createQuery("SELECT u FROM Sexe u");
 		System.out.println(query.getResultList());
 		return query.getResultList();
+	}
+	
+	@Override
+	public Sexe findSexe(int idSexe) {
+		
+		Sexe sexe = em.find(Sexe.class, idSexe);
+		em.flush();
+		return sexe;
 	}
 	
 	

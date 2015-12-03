@@ -42,4 +42,9 @@ public class EnseignantServicesImpl implements EnseignantServices{
 		return query.getResultList();
 	}
 
+	@Override
+	public void removeEnseignant(int idEnseignant) {
+		em.remove(getEnseignant(idEnseignant));
+	}
+
 }

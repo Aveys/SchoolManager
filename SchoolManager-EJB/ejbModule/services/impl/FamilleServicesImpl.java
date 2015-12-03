@@ -9,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entities.Famille;
+import entities.Niveau;
+import entities.Tuteur;
 import services.FamilleServices;
 
 
@@ -55,5 +57,20 @@ public class FamilleServicesImpl implements FamilleServices{
 	public void removeFamille(int idClasse) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void addFamille(Famille famille, int id_tuteur_1, int id_parent_1, int id_parent_2) {
+	
+		 Tuteur tuteur = em.getReference(Tuteur.class, id_tuteur_1);
+		famille.setTETuteurTut1(tuteur);
+		
+		Tuteur parent_1 = em.getReference(Tuteur.class, id_parent_1);
+		famille.setTETuteurTut2(parent_1);
+		
+		Tuteur parent_2 = em.getReference(Tuteur.class, id_parent_2);
+		famille.setTETuteurTut3(parent_2);
+	
+		em.persist(famille);
 	}
 }

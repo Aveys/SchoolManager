@@ -13,9 +13,17 @@ import java.util.List;
 @Table(name="t_e_tuteur_tut")
 @NamedQuery(name="Tuteur.findAll", query="SELECT t FROM Tuteur t")
 public class Tuteur implements Serializable {
+	@Override
+	public String toString() {
+		return "Tuteur [email=" + email + ", nom=" + nom + ", numPortable=" + numPortable + ", numSecu=" + numSecu
+				+ ", prenom=" + prenom + ", TRSexeSex=" + TRSexeSex + ", TRSituationFamilialeSifa="
+				+ TRSituationFamilialeSifa + ", TEAdresseAdr=" + TEAdresseAdr + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_tuteur")
 	private int idTuteur;
 
@@ -59,6 +67,7 @@ public class Tuteur implements Serializable {
 	private Adresse TEAdresseAdr;
 
 	public Tuteur() {
+		TEAdresseAdr = new Adresse();
 	}
 
 	public int getIdTuteur() {

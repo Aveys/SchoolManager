@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 template="template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Liste des enseignants
+					</h1>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+			<div class="col-lg-12">
+				<div class="col-lg-12">
+					<h:form id="form">
+						<p:dataTable id="tbl" var="enseignant" value="#{enseignantController.listEnseignants}"
+							widgetVar="enseignantsTable"
+							emptyMessage="Aucun utilisateur ne correspond à ses critères"
+							filteredValue="#{enseignantController.filteredEnseignants}">
+
+							<f:facet name="header">
+								<p:outputPanel>
+									<h:outputText value="Rechercher:" />
+									<p:inputText id="globalFilter"
+										onkeyup="PF('enseignantsTable').filter()" style="width:150px"
+										placeholder="Mots clés" />
+							
+								<h:commandLink>
+									<i class="fa fa-file-excel-o"></i>
+									<p:dataExporter type="xls" target="tbl" fileName="Enseignants" />
+								</h:commandLink>
+								</p:outputPanel>
+							</f:facet>
+
+							<p:column headerText="Nom" filterBy="#{enseignant.nom}">
+								<h:outputText value="#{enseignant.nom}" />
+							</p:column>
+							<p:column headerText="Prenom" filterBy="#{enseignant.prenom}">
+								<h:outputText value="#{enseignant.prenom}" />
+							</p:column>
+							<p:column headerText="Mail" filterBy="#{enseignant.email}">
+								<h:outputText value="#{enseignant.email}" />
+							</p:column>
+							<p:column headerText="Téléphone">
+								<h:outputText value="#{enseignant.numPortable}" />
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</div>
+			 </div>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+	</ui:define>
+</ui:composition>

@@ -17,4 +17,5 @@ public interface FamilleServices {
 	public Famille findFamille(int idFamille);
 	//public void updateFamille(Classe classe, int idEcole, int idEnseignant, int idNiveau);
 	public void removeFamille(int idClasse);
+	public void addFamille(Famille famille, int id_tuteur_1, int id_parent_1, int id_parent_2);
 }

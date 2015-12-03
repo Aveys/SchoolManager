@@ -10,11 +10,13 @@ import entities.Enseignant;
 import services.EnseignantServices;
 import services.impl.EnseignantServicesImpl;
 
-@ManagedBean
+@ManagedBean(name="enseignantController")
 @SessionScoped
 public class EnseignantController {
 	
 	private Enseignant enseignant = new Enseignant();
+	
+	private List<Enseignant> filteredEnseignants;
 	 
 	@EJB
 	private EnseignantServices service;
@@ -26,5 +28,15 @@ public class EnseignantController {
 	
 	public List<Enseignant> getListEnseignants(){
 		return service.getListEnseignants();
+	}
+
+
+	public List<Enseignant> getFilteredEnseignants() {
+		return filteredEnseignants;
+	}
+
+
+	public void setFilteredEnseignants(List<Enseignant> filteredEnseignants) {
+		this.filteredEnseignants = filteredEnseignants;
 	}
 }

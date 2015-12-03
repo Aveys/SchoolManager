@@ -13,6 +13,12 @@ import java.util.List;
 @Table(name="t_e_famille_fam")
 @NamedQuery(name="Famille.findAll", query="SELECT f FROM Famille f")
 public class Famille implements Serializable {
+	@Override
+	public String toString() {
+		return "Famille [TETuteurTut1=" + TETuteurTut1 + ", TETuteurTut2=" + TETuteurTut2 + ", TETuteurTut3="
+				+ TETuteurTut3 + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -44,6 +50,10 @@ public class Famille implements Serializable {
 	private Tuteur TETuteurTut3;
 
 	public Famille() {
+		TETuteurTut1 = new Tuteur();
+		TETuteurTut2 = new Tuteur();
+		TETuteurTut3 = new Tuteur();
+	
 	}
 
 	public int getIdFamille() {

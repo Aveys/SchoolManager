@@ -32,6 +32,20 @@
 							emptyMessage="Aucun enfant trouvé avec ces critères"
 							filteredValue="#{enfantController.filteredEnfants}">
 							
+							<f:facet name="header">
+							<p:outputPanel>
+								<h:outputText value="Rechercher:" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('enfantTable').filter()" style="width:150px"
+									placeholder="Recherche" />
+									
+								<h:commandLink>
+									<i class="fa fa-file-excel-o"></i>
+									<p:dataExporter type="xls" target="tbl" fileName="Enfants" />
+								</h:commandLink>
+							</p:outputPanel>
+						</f:facet>
+							
 							<p:column headerText="Nom">
 								<h:outputText value="#{enfant.nom}" />
 							</p:column>

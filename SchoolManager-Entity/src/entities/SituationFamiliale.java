@@ -13,6 +13,11 @@ import java.util.List;
 @Table(name="t_r_situation_familiale_sifa")
 @NamedQuery(name="SituationFamiliale.findAll", query="SELECT s FROM SituationFamiliale s")
 public class SituationFamiliale implements Serializable {
+	@Override
+	public String toString() {
+		return "SituationFamiliale [idSituationFamiliale=" + idSituationFamiliale + ", libelle=" + libelle + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id

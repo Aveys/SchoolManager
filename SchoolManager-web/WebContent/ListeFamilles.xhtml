@@ -32,6 +32,11 @@
 								<p:inputText id="globalFilter"
 									onkeyup="PF('familleTable').filter()" style="width:150px"
 									placeholder="Enter keyword" />
+									
+									<h:commandLink>
+									<i class="fa fa-file-excel-o"></i>
+									<p:dataExporter type="xls" target="tbl" fileName="Familles" />
+								</h:commandLink>
 							</p:outputPanel>
 						</f:facet>
 						

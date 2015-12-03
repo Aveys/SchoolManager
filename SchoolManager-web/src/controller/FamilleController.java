@@ -10,11 +10,13 @@ import entities.Famille;
 import entities.Enfant;
 import entities.User;
 import services.FamilleServices;
+import services.AdresseServices;
 import services.DroitServices;
 import services.EcoleServices;
 import services.EnfantServices;
 import services.EnseignantServices;
 import services.NiveauServices;
+import services.TuteurServices;
 import services.UserServices;
 import services.impl.FamilleServicesImpl;
 
@@ -36,6 +38,12 @@ public class FamilleController {
 
 	@EJB
 	private EnfantServices enfantService;
+	
+	@EJB
+	private TuteurServices tuteurService;
+	
+	@EJB
+	private AdresseServices adresseService;
 
 	private Famille famille = new Famille();
 	private int idEnseignant;
@@ -99,5 +107,30 @@ public class FamilleController {
 			ret += e.getNom()+" "+e.getPrenom()+" | ";
 		}
 		return ret;
+	}
+	public String saveFamille(Famille famille, int id_situationFam_tuteur1,int id_situationFam_tuteur2, int id_situationFam_tuteur3, int id_sexe_tuteur1, int id_sexe_tuteur2, int id_sexe_tuteur3){
+		System.out.println("######################################\nEnregistrement d'une famille");
+		//System.out.println(famille);
+		
+		
+		System.out.println("########### Enregistrement du tuteur");
+		///Creation du 1er tuteur
+		int idAdresse_tut_1 = adresseService.addAdresse(famille.getTETuteurTut1().getTEAdresseAdr());
+		int idTuteur_1 = tuteurService.addTuteur(famille.getTETuteurTut1(), idAdresse_tut_1, id_sexe_tuteur1, id_situationFam_tuteur1);
+		
+		
+		//Ajout de l'adresse du Parent 1
+		int idAdresse_tut_2 = adresseService.addAdresse(famille.getTETuteurTut2().getTEAdresseAdr());
+		int idTuteur_2 = tuteurService.addTuteur(famille.getTETuteurTut2(), idAdresse_tut_2, id_sexe_tuteur2, id_situationFam_tuteur2);
+		
+		System.out.println("###########  Enregistrement du parent 2");
+		/// Ajout de l'adresse du Parent 2
+		int idAdresse_tut_3 = adresseService.addAdresse(famille.getTETuteurTut3().getTEAdresseAdr());
+		int idTuteur_3 = tuteurService.addTuteur(famille.getTETuteurTut3(), idAdresse_tut_3, id_sexe_tuteur3, id_situationFam_tuteur3);
+		
+		service.addFamille(famille, idTuteur_1, idTuteur_2, idTuteur_3);
+		
+		
+		return "ListeFamilles";
 	}
 }

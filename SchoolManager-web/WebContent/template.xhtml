@@ -94,16 +94,13 @@
                     	<a href="ListeEnfants.xhtml"><i class="fa fa-child"></i> Gestion des Eleves</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="icon-sidebar fa fa-fw fa-money"></i> Gestion des frais</a>
+                        <a href="#"><i class="icon-sidebar fa fa-fw fa-money"></i> Gestion des frais</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="icon-sidebar fa fa-fw fa-calendar"></i> Gestion des plannings</a>
+                        <a href="Planning.xhtml"><i class="icon-sidebar fa fa-fw fa-calendar"></i> Gestion des plannings</a>
                     </li>
                     <li>
-                        <a href="bootstrap-elements.html"><i class="icon-sidebar fa fa-fw fa-bar-chart"></i> Statistiques</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="icon-sidebar fa fa-fw fa-upload"></i> Export</a>
+                        <a href="Stats.xhtml"><i class="icon-sidebar fa fa-fw fa-bar-chart"></i> Statistiques</a>
                     </li>
                     <c:if test="#{not empty sessionScope.loggedUser and sessionScope.loggedUser.TRDroitsDro.libelle=='Admin'}">
                     <li>
@@ -111,9 +108,6 @@
                         <ul id="demo" class="collapse">
                             <li>
                                 <a href="ListeUtilisateurs.xhtml"><i class="icon-sidebar fa fa-fw fa-users"></i>Gestion des utilisateurs</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
                     </li>
